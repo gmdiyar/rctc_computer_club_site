@@ -1,0 +1,74 @@
+body {
+  font-family: "Google Sans Code", monospace;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  padding: 1%
+}
+
+p, body {
+  font-weight: 400;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 2%;
+  padding-left: 5%;
+  align-content: center;
+  gap: 15px
+}
+
+button {
+  flex: 1;
+  background-color: #0000002c;
+  color: rgb(0, 0, 0);
+  border: none;             
+  padding: 10px 20px;
+  font-size: 16px;          
+  font-family: "Google Sans Code", monospace;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+button:active {
+  transform: scale(0.95)
+}
+#join {
+  flex: 1;
+  background-color: #7351ee;
+  color: rgb(255, 255, 255);
+  border: none;             
+  padding: 10px 20px;
+  font-size: 16px;          
+  font-family: "Google Sans Code", monospace;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+} 
+
+#the_guys {
+  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+#meeting_room {
+  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+  width: 50%;
+}
