@@ -1,74 +1,141 @@
-body {
-  font-family: "Google Sans Code", monospace;
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* 
+.space-mono-regular {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 
-h1, h2, h3 {
+.space-mono-bold {
+  font-family: "Space Mono", monospace;
   font-weight: 700;
-  padding: 1%
+  font-style: normal;
 }
 
-p, body {
+.space-mono-regular-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.space-mono-bold-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+} 
+*/
+
+:root{
+  --one: #7161EF;
+  --two: #957FEF;
+  --three: #B79CED;
+  --four: #DEC0F1;
+  --five: #EFD9CE;
+}
+
+#header{
+  background: linear-gradient(to right, var(--one), var(--five));
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0;
+  margin:0;
+}
+
+a{
+  text-decoration: none;
+}
+
+*>*{
+  box-sizing: border-box;
+}
+
+.container{
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: auto;
+}
+
+.text-light{
+  color: var(--five)
+}
+.text-secondary{
+  color: var(--four)
+}
+.text-middle{
+  color: var(--three)
+}
+.text-main{
+  color: var(--two)
+}
+.text-dark{
+  color: var(--one)
+}
+
+.navbar{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.nav-logo{
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+  align-self: center;
+  font-size: 32px;
+}
+.navbar-nav{
+  align-self: center;
+  color: var(--one);
+  font-family: "Space Mono", monospace;
+  font-weight: 600;
+  text-decoration: none;
+}
+.navbar-nav a{
+  align-self: center;
+  color: white;
+  font-family: "Space Mono", monospace;
+  font-weight: 600;
+  text-decoration: none;
+}
+.navbar-nav a:hover{
+  align-self: center;
+  color: var(--five);
+  font-family: "Space Mono", monospace;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.collapse{
+  align-self: center;
+  color: var(--three);
+  font-family: "Space Mono", monospace;
   font-weight: 400;
 }
 
-header {
-  display: flex;
-  justify-content: center;
-  background-color: #ffffff;
-  padding: 2%;
-  padding-left: 5%;
-  align-content: center;
-  gap: 15px
+.nav-link{
+  font-size: 18px;
+  margin: 12px;
+  color: var(--one)
 }
 
-button {
-  flex: 1;
-  background-color: #0000002c;
-  color: rgb(0, 0, 0);
-  border: none;             
-  padding: 10px 20px;
-  font-size: 16px;          
-  font-family: "Google Sans Code", monospace;
-  border-radius: 4px;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-button:active {
-  transform: scale(0.95)
-}
-#join {
-  flex: 1;
-  background-color: #7351ee;
-  color: rgb(255, 255, 255);
-  border: none;             
-  padding: 10px 20px;
-  font-size: 16px;          
-  font-family: "Google Sans Code", monospace;
-  border-radius: 4px;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-} 
-
-#the_guys {
-  border-radius: 5px;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: auto;
-  margin-bottom: 20px;
-  width: 50%;
+.nav-link:hover{
+  color: black
 }
 
-#meeting_room {
-  border-radius: 5px;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: auto;
-  width: 50%;
+.search-box{
+  display: inline;
+  border-right: 1px solid var(--one);
+}
+
+.header{
+  background-color: var(--two);
+
 }
