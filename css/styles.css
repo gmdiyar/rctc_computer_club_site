@@ -60,6 +60,61 @@ a{
   margin: auto;
 }
 
+.img-room{
+  width: 100%;
+  margin-left: 10%
+}
+
+
+
+/* infinite sliding images */
+.carousel {
+  margin: 100px auto;
+  width: 90%;
+  border: 5px solid var(--five);
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  flex-shrink: 0;
+}
+
+.card {
+  flex: 0 0 25em;
+  height: 20em;
+  padding: 0;
+  background: var(--two);
+  border-radius: .2em;
+  overflow: hidden;
+  /* margin-right: 2em; Consistent spacing */
+}
+
+.card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+
 .text-light{
   color: var(--five)
 }
@@ -74,6 +129,15 @@ a{
 }
 .text-dark{
   color: var(--one)
+}
+
+.text-title{
+  font-family: "Space Mono", monospace;
+  font-weight: bold;
+}
+
+.secondary-title{
+  font-family: "Space Mono", monospace;
 }
 
 .navbar{
@@ -97,6 +161,9 @@ a{
   font-family: "Space Mono", monospace;
   font-weight: 600;
   text-decoration: none;
+}
+a:active{
+  color: inherit;
 }
 .navbar-nav a{
   align-self: center;
