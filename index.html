@@ -1,28 +1,21 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>RCTC Computer Science Club</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-        <meta name="description" content="Offical website of the RCTC Computer Science Club.">
+        <meta name="description" content="Official website of the RCTC Computer Science Club.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css\styles.css">
+        <link rel="stylesheet" href="css/index-style.css">
     </head>
     <body>
-        <header id="header" class="shadow bg-light">
+        <header id="header">
             <nav class="container navbar">
-                <a href="/index.html" class="nav-logo">
-                    RCSC
-                </a>
-                <div class="collapse">
+                <a href="/index.html" class="nav-logo">RCSC</a>
+                <div class="collapse nav-menu">
                     <ul class="navbar-nav">
                         <a href="#" class="nav-home">Home</a>
                         <a href="#" class="nav-about">About</a>
@@ -32,31 +25,168 @@
                         <a href="#" class="nav-leadership">Leadership</a>
                     </ul>
                 </div>
-
-                <div class="collapse">
+                <div class="collapse social-links">
                     <ul class="navbar-nav">
                         <a href="#" class="nav-link"><i class="fa-brands fa-tiktok"></i></a>
-                        <a href="#" class="nav-link"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" rel="no-referrer noopener" class="nav-link"><i class="fa-brands fa-discord"></i></a>
                         <a href="#" class="nav-link"><i class="fa-brands fa-youtube"></i></a>
                         <a href="#" class="nav-link"><i class="fa-brands fa-instagram"></i></a>
                     </ul>
                 </div>
+                
+                <!-- Hamburger Menu Button -->
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
+
+            <!-- Mobile Menu Dropdown -->
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#" class="mobile-nav-link">Home</a>
+                <a href="#" class="mobile-nav-link">About</a>
+                <a href="#" class="mobile-nav-link">Projects</a>
+                <a href="#" class="mobile-nav-link">Events</a>
+                <a href="#" class="mobile-nav-link">Members</a>
+                <a href="#" class="mobile-nav-link">Leadership</a>
+                <div class="mobile-social">
+                    <a href="#" class="mobile-social-link"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="mobile-social-link"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="mobile-social-link"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="mobile-social-link"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
         </header>
-            <section class="container">
-                <div class="slider-wrapper">
-                    <div class="slider">
-                        <img id="slide-1" src="images\meeting_room_2.JPEG" alt="">
-                        <img id="slide-2" src="images\meeting_room.JPEG" alt="">
-                        <img id="slide-3" src="images\saif_and_ibrahim.JPEG" alt="">
+
+        <div class="main-wrapper">
+            <aside class="left-column">
+                <div class="inner-left-column">
+                    <h3>News & Updates</h3>
+        <p class="news"><span class="blink-arrow">►</span> Welcome to the RCTC Computer Science Club! Check out our latest events and projects.</p>
+        <p class="news"><span class="blink-arrow">►</span> Next meeting: Every Tuesday at 3 PM in Room 101.</p>
+        <p class="news"><span class="blink-arrow">►</span> Join us for our upcoming hackathon!</p>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="content-container">
+                    <h1 class="text-title text-dark">Welcome to the Computer Science Club of RCTC</h1>
+                    <p class="text-secondary">A community of programmers dedicated to technology, hands-on education, and engineering.</p>
+                    
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img id="slide-1" src="images/meeting_room_2.JPEG" alt="Meeting Room">
+                            <img id="slide-2" src="images/meeting_room.JPEG" alt="Meeting Room">
+                            <img id="slide-3" src="images/saif_and_ibrahim.JPEG" alt="Club Members">
+                        </div>
+                        <div class="slider-nav">
+                            <a href="#slide-1"></a>
+                            <a href="#slide-2"></a>
+                            <a href="#slide-3"></a>
+                        </div>
                     </div>
-                    <div class="slider-nav">
-                        <a href="#slide-1"></a>
-                        <a href="#slide-2"></a>
-                        <a href="#slide-3"></a>
+
+                    <section class="about-section">
+                        <h2 class="text-title text-dark">About Our Club</h2>
+                        <p>The RCTC Computer Science Club is a community of passionate students interested in technology, programming, and innovation.</p>
+                    </section>
+                </div>
+            </main>
+
+            <aside class="right-column">
+                <div class="inner-right-column">
+                    <!-- Dropdown Section 1 -->
+                    <div class="dropdown-section">
+                        <button class="dropdown-header">
+                            <span>Upcoming Events</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">
+                                <h4>Hackathon 2025</h4>
+                                <p>January 15, 2025</p>
+                            </div>
+                            <div class="dropdown-item">
+                                <h4>Python Workshop</h4>
+                                <p>January 22, 2025</p>
+                            </div>
+                            <div class="dropdown-item">
+                                <h4>Guest Speaker: AI Ethics</h4>
+                                <p>February 5, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown Section 2 -->
+                    <div class="dropdown-section">
+                        <button class="dropdown-header">
+                            <span>Resources</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">
+                                <a href="#">Student Portal</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="#">Code Repository</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="#">Learning Materials</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="#">Discord Server</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown Section 3 -->
+                    <div class="dropdown-section">
+                        <button class="dropdown-header">
+                            <span>Quick Links</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">
+                                <a href="#">Join the Club</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="#">Meeting Schedule</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="#">Contact Us</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="#">FAQs</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dropdown Section 4 -->
+                    <div class="dropdown-section">
+                        <button class="dropdown-header">
+                            <span>Club Projects</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">
+                                <h4>Website Redesign</h4>
+                                <p>Status: In Progress</p>
+                            </div>
+                            <div class="dropdown-item">
+                                <h4>Mobile App Development</h4>
+                                <p>Status: Planning</p>
+                            </div>
+                            <div class="dropdown-item">
+                                <h4>AI Chatbot</h4>
+                                <p>Status: Completed</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-        <script src="js\scripts.js" async defer></script>
+            </aside>
+        </div>
+
+        <script src="js/scripts.js" async defer></script>
     </body>
 </html>
