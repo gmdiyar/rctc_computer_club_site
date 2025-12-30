@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members - RCTC Computer Science Club</title>
+    <link rel="stylesheet" href="css/members-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav class="container navbar">
+            <a href="index.html" class="nav-logo">RCSC</a>
+            <div class="collapse nav-menu">
+                <ul class="navbar-nav">
+                    <a href="#" class="nav-events">Events</a>
+                    <a href="#" class="nav-about">Projects</a>
+                    <a href="#" class="nav-projects join">Join</a>
+                    <a href="members.html" class="nav-members active">Members</a>
+                    <a href="#" class="nav-projects">About</a>
+                </ul>
+            </div>
+            
+            <!-- Hamburger Menu Button -->
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Dropdown -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+            <a href="#" class="mobile-nav-link">Events</a>
+            <a href="#" class="mobile-nav-link">Projects</a>
+            <a href="members.html" class="mobile-nav-link">Members</a>
+            <a href="#" class="mobile-nav-link">About</a>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <aside class="left-column">
+        </aside>
+
+        <main class="main-content">
+            <div class="content-container">
+                <h1 class="text-title text-dark">Our Members</h1>
+                <p class="text-secondary">Meet the talented individuals who make our club amazing</p>
+
+                <!-- Filter Section -->
+                <div class="filter-section">
+                    <div class="filter-controls">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="leadership">Leadership</button>
+                        <button class="filter-btn" data-filter="developers">Members</button>
+                        <button class="filter-btn" data-filter="designers">Developers</button>
+                    </div>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="memberSearch" placeholder="Search members...">
+                    </div>
+                </div>
+
+                <!-- Members Grid -->
+                <div class="members-grid" id="membersGrid">
+                    <!-- Leadership -->
+                    <div class="member-card" data-category="leadership">
+                        <div class="member-badge">President</div>
+                        <div class="member-avatar">
+                            <i class="fas fa-user"></i>
+                            <div class="status-dot online"></div>
+                        </div>
+                        <h3 class="member-name">Diyar Giyash</h3>
+                        <p class="member-role">Club President</p>
+                        <p class="member-bio">Bio</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">#</span>
+                            <span class="skill-tag">#</span>
+                            <span class="skill-tag">#</span>
+                        </div>
+                        <div class="member-socials">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="member-card" data-category="leadership">
+                        <div class="member-badge">VP</div>
+                        <div class="member-avatar">
+                            <i class="fas fa-user"></i>
+                            <div class="status-dot online"></div>
+                        </div>
+                        <h3 class="member-name">Saif Giyash</h3>
+                        <p class="member-role">Vice President</p>
+                        <p class="member-bio">Bio</p>
+                        <div class="member-skills">
+                            <span class="skill-tag">#</span>
+                            <span class="skill-tag">#</span>
+                            <span class="skill-tag">#</span>
+                        </div>
+                        <div class="member-socials">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-column">
+            <div class="inner-right-column">
+                <!-- Quick Actions -->
+                <div class="dropdown-section">
+                    <button class="dropdown-header">
+                        <span>Quick Actions</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <a href="#">View All Members</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#">Join the Club</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#">Contact Leadership</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member Categories -->
+                <div class="dropdown-section">
+                </div>
+            </div>
+
+            <!-- Social Links Section -->
+            <div class="social-section">
+                <div class="social-links-container">
+                    <a href="#" class="social-link-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" rel="no-referrer noopener" class="social-link-item" title="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="social-link-item" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-link-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js/members-script.js"></script>
+</body>
+</html>
