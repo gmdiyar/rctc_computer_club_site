@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - RCTC Computer Science Club</title>
+    <link rel="stylesheet" href="css\projects-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <header id="header">
+        <nav class="container navbar">
+            <a href="index.html" class="nav-logo">RCSC</a>
+            <div class="collapse nav-menu">
+                <ul class="navbar-nav">
+                    <a href="events.html" class="nav-events">Events</a>
+                    <a href="projects.html" class="nav-projects active">Projects</a>
+                    <a href="join.html" class="nav-join join">Join</a>
+                    <a href="members.html" class="nav-members">Members</a>
+                    <a href="about.html" class="nav-about">About</a>
+                </ul>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="calendar.html" class="mobile-nav-link"><i class="fas fa-calendar"></i> Calendar</a>
+            <a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a>
+            <a href="gallery.html" class="mobile-nav-link"><i class="fas fa-images"></i> Gallery</a>
+            <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-images"></i> Documentation</a>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <aside class="left-column">
+            <div class="inner-left-column">
+                <h3>Project Stats</h3>
+                <div class="stat-box">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Active</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">45</span>
+                    <span class="stat-label">Contributors</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-container">
+                <div class="page-header">
+                    <div class="header-text">
+                        <h1 class="text-title text-dark">Projects</h1>
+                        <p class="text-secondary">Build, learn, and collaborate with our community</p>
+                    </div>
+                </div>
+
+                <!-- Controls Bar -->
+                <div class="controls-bar">
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="active">Active</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                        <button class="filter-btn" data-filter="archived">Archived</button>
+                    </div>
+                    
+                    <div class="control-actions">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="projectSearch" placeholder="Search projects...">
+                        </div>
+                        
+                        <div class="view-switcher">
+                            <button class="view-btn active" data-view="grid" title="Grid View">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button class="view-btn" data-view="list" title="List View">
+                                <i class="fas fa-list"></i>
+                            </button>
+                            <button class="view-btn" data-view="compact" title="Compact View">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects Container -->
+                <div id="projectsContainer" class="projects-container grid-view">
+                    <!-- Project 1 -->
+                    <article class="project-item" data-status="active" data-category="web">
+                        <div class="project-header">
+                            <div class="project-title-row">
+                                <h3 class="project-name">Club Website Redesign</h3>
+                                <span class="status-badge active">Active</span>
+                            </div>
+                            <p class="project-description">Modern, responsive website for the CS Club featuring member profiles, event calendars, and project showcases.</p>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        
+                        <div class="project-members">
+                            <div class="members-label">Team Members:</div>
+                            <div class="member-avatars">
+                                <div class="member-avatar" title="Diyar Giyash">DG</div>
+                                <div class="member-avatar" title="Saif Giyash">SG</div>
+                                <div class="member-avatar" title="Yousif Flaijah">YF</div>
+                                <div class="member-avatar" title="Ibrahim Abdi">IA</div>
+                                <div class="member-count">+2</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <span class="meta-item"><i class="fas fa-calendar"></i> Started Jan 2026</span>
+                            <span class="meta-item"><i class="fas fa-code-branch"></i> 24 commits</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="https://github.com/rctc-cs-club/website" target="_blank" class="btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-item" data-status="active" data-category="ai">
+                        <div class="project-header">
+                            <div class="project-title-row">
+                                <h3 class="project-name">Study Buddy AI</h3>
+                                <span class="status-badge active">Active</span>
+                            </div>
+                            <p class="project-description">AI-powered study assistant using natural language processing to help students with homework and exam preparation.</p>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">React</span>
+                        </div>
+                        
+                        <div class="project-members">
+                            <div class="members-label">Team Members:</div>
+                            <div class="member-avatars">
+                                <div class="member-avatar" title="Diyar Giyash">DG</div>
+                                <div class="member-avatar" title="Yousif Flaijah">YF</div>
+                                <div class="member-avatar" title="John Smith">JS</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <span class="meta-item"><i class="fas fa-calendar"></i> Started Nov 2025</span>
+                            <span class="meta-item"><i class="fas fa-code-branch"></i> 87 commits</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="https://github.com/rctc-cs-club/study-buddy" target="_blank" class="btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-item" data-status="active" data-category="mobile">
+                        <div class="project-header">
+                            <div class="project-title-row">
+                                <h3 class="project-name">Campus Navigator</h3>
+                                <span class="status-badge active">Active</span>
+                            </div>
+                            <p class="project-description">Mobile app with interactive campus maps, building information, and real-time classroom availability.</p>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Google Maps API</span>
+                        </div>
+                        
+                        <div class="project-members">
+                            <div class="members-label">Team Members:</div>
+                            <div class="member-avatars">
+                                <div class="member-avatar" title="Saif Giyash">SG</div>
+                                <div class="member-avatar" title="Ibrahim Abdi">IA</div>
+                                <div class="member-avatar" title="Emily Chen">EC</div>
+                                <div class="member-avatar" title="Alex Johnson">AJ</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <span class="meta-item"><i class="fas fa-calendar"></i> Started Oct 2025</span>
+                            <span class="meta-item"><i class="fas fa-code-branch"></i> 156 commits</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="https://github.com/rctc-cs-club/campus-nav" target="_blank" class="btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- Project 4 -->
+                    <article class="project-item" data-status="active" data-category="web">
+                        <div class="project-header">
+                            <div class="project-title-row">
+                                <h3 class="project-name">Event Management System</h3>
+                                <span class="status-badge active">Active</span>
+                            </div>
+                            <p class="project-description">Web platform for managing club events, RSVPs, attendance tracking, and automated reminders.</p>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        
+                        <div class="project-members">
+                            <div class="members-label">Team Members:</div>
+                            <div class="member-avatars">
+                                <div class="member-avatar" title="Yousif Flaijah">YF</div>
+                                <div class="member-avatar" title="Maria Garcia">MG</div>
+                                <div class="member-avatar" title="David Lee">DL</div>
+                                <div class="member-count">+3</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <span class="meta-item"><i class="fas fa-calendar"></i> Started Dec 2025</span>
+                            <span class="meta-item"><i class="fas fa-code-branch"></i> 63 commits</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="https://github.com/rctc-cs-club/event-manager" target="_blank" class="btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- Project 5 -->
+                    <article class="project-item" data-status="completed" data-category="game">
+                        <div class="project-header">
+                            <div class="project-title-row">
+                                <h3 class="project-name">Maze Runner Game</h3>
+                                <span class="status-badge completed">Completed</span>
+                            </div>
+                            <p class="project-description">2D puzzle game with procedurally generated mazes, multiple difficulty levels, and time challenges.</p>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                        </div>
+                        
+                        <div class="project-members">
+                            <div class="members-label">Team Members:</div>
+                            <div class="member-avatars">
+                                <div class="member-avatar" title="Ibrahim Abdi">IA</div>
+                                <div class="member-avatar" title="Kevin Park">KP</div>
+                                <div class="member-avatar" title="Lisa Wong">LW</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <span class="meta-item"><i class="fas fa-calendar"></i> Completed Sep 2025</span>
+                            <span class="meta-item"><i class="fas fa-code-branch"></i> 142 commits</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="https://github.com/rctc-cs-club/maze-runner" target="_blank" class="btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- Project 6 -->
+                    <article class="project-item" data-status="completed" data-category="web">
+                        <div class="project-header">
+                            <div class="project-title-row">
+                                <h3 class="project-name">Course Review Platform</h3>
+                                <span class="status-badge completed">Completed</span>
+                            </div>
+                            <p class="project-description">Platform for students to anonymously review courses, professors, and share study tips.</p>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Redis</span>
+                        </div>
+                        
+                        <div class="project-members">
+                            <div class="members-label">Team Members:</div>
+                            <div class="member-avatars">
+                                <div class="member-avatar" title="Diyar Giyash">DG</div>
+                                <div class="member-avatar" title="Saif Giyash">SG</div>
+                                <div class="member-avatar" title="Tom Martinez">TM</div>
+                                <div class="member-avatar" title="Sarah Kim">SK</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <span class="meta-item"><i class="fas fa-calendar"></i> Completed Nov 2025</span>
+                            <span class="meta-item"><i class="fas fa-code-branch"></i> 203 commits</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="https://github.com/rctc-cs-club/course-reviews" target="_blank" class="btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- Project 7 -->
+                    <article class="project-item" data-status="active" data-category="data">
+                        <div class="project-header">
+                            <div class="project-title-row">
+                                <h3 class="project-name">Student Performance Analytics</h3>
+                                <span class="status-badge active">Active</span>
+                            </div>
+                            <p class="project-description">Data visualization dashboard analyzing student performance trends and predicting outcomes.</p>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Plotly</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                        </div>
+                        
+                        <div class="project-members">
+                            <div class="members-label">Team Members:</div>
+                            <div class="member-avatars">
+                                <div class="member-avatar" title="Yousif Flaijah">YF</div>
+                                <div class="member-avatar" title="Nina Patel">NP</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <span class="meta-item"><i class="fas fa-calendar"></i> Started Jan 2026</span>
+                            <span class="meta-item"><i class="fas fa-code-branch"></i> 45 commits</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="https://github.com/rctc-cs-club/performance-analytics" target="_blank" class="btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- Project 8 -->
+                    <article class="project-item" data-status="completed" data-category="ai">
+                        <div class="project-header">
+                            <div class="project-title-row">
+                                <h3 class="project-name">Spam Email Classifier</h3>
+                                <span class="status-badge completed">Completed</span>
+                            </div>
+                            <p class="project-description">Machine learning model to classify and filter spam emails with 97% accuracy.</p>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NLTK</span>
+                            <span class="tech-tag">TensorFlow</span>
+                        </div>
+                        
+                        <div class="project-members">
+                            <div class="members-label">Team Members:</div>
+                            <div class="member-avatars">
+                                <div class="member-avatar" title="Ibrahim Abdi">IA</div>
+                                <div class="member-avatar" title="Rachel Green">RG</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <span class="meta-item"><i class="fas fa-calendar"></i> Completed Oct 2025</span>
+                            <span class="meta-item"><i class="fas fa-code-branch"></i> 78 commits</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="https://github.com/rctc-cs-club/spam-classifier" target="_blank" class="btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- Project 9 -->
+                    <article class="project-item" data-status="archived" data-category="web">
+                        <div class="project-header">
+                            <div class="project-title-row">
+                                <h3 class="project-name">Recipe Sharing App</h3>
+                                <span class="status-badge archived">Archived</span>
+                            </div>
+                            <p class="project-description">Social platform for sharing and discovering recipes. Project archived due to team graduation.</p>
+                        </div>
+                        
+                        <div class="project-tech">
+                            <span class="tech-tag">Ruby on Rails</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Bootstrap</span>
+                        </div>
+                        
+                        <div class="project-members">
+                            <div class="members-label">Team Members:</div>
+                            <div class="member-avatars">
+                                <div class="member-avatar" title="Alumni Team">AT</div>
+                                <div class="member-count">+4</div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-meta">
+                            <span class="meta-item"><i class="fas fa-calendar"></i> Archived May 2025</span>
+                            <span class="meta-item"><i class="fas fa-code-branch"></i> 189 commits</span>
+                        </div>
+                        
+                        <div class="project-actions">
+                            <a href="https://github.com/rctc-cs-club/recipe-app" target="_blank" class="btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No projects found</h3>
+                    <p>Try adjusting your filters or search terms</p>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-column">
+            <div class="inner-right-column">
+                <div class="dropdown-section active">
+                    <button class="dropdown-header">
+                        <span>Categories</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item"><a href="#" data-category="web">Web Development</a></div>
+                        <div class="dropdown-item"><a href="#" data-category="mobile">Mobile Apps</a></div>
+                        <div class="dropdown-item"><a href="#" data-category="ai">AI/ML</a></div>
+                        <div class="dropdown-item"><a href="#" data-category="game">Games</a></div>
+                        <div class="dropdown-item"><a href="#" data-category="data">Data Science</a></div>
+                    </div>
+                </div>
+
+                <div class="dropdown-section">
+                    <button class="dropdown-header">
+                        <span>Get Involved</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item"><a href="#">Submit Project Idea</a></div>
+                        <div class="dropdown-item"><a href="#">Join a Team</a></div>
+                        <div class="dropdown-item"><a href="#">Project Guidelines</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-section">
+                <div class="social-links-container">
+                    <a href="#" class="social-link-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" class="social-link-item" title="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="social-link-item" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-link-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js\projects-script.js"></script>
+</body>
+</html>

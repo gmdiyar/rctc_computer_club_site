@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - RCTC Computer Science Club</title>
+    <link rel="stylesheet" href="css/gallery-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <header id="header">
+        <nav class="container navbar">
+            <a href="index.html" class="nav-logo">RCSC</a>
+            <div class="collapse nav-menu">
+                <ul class="navbar-nav">
+                    <a href="events.html" class="nav-events">Events</a>
+                    <a href="projects.html" class="nav-projects">Projects</a>
+                    <a href="join.html" class="nav-join join">Join</a>
+                    <a href="members.html" class="nav-members">Members</a>
+                    <a href="about.html" class="nav-about">About</a>
+                </ul>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="calendar.html" class="mobile-nav-link"><i class="fas fa-calendar"></i> Calendar</a>
+            <a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a>
+            <a href="gallery.html" class="mobile-nav-link"><i class="fas fa-images"></i> Gallery</a>
+            <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-images"></i> Documentation</a>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <aside class="left-column">
+            <div class="inner-left-column">
+                <h3>Filter by Year</h3>
+                <div class="year-filters">
+                    <button class="year-btn active" data-year="all">All Years</button>
+                    <button class="year-btn" data-year="2026">2026</button>
+                    <button class="year-btn" data-year="2025">2025</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-container">
+                <div class="page-header">
+                    <h1 class="text-title text-dark">Photo Gallery</h1>
+                    <p class="text-secondary">Memories from our events, meetings, and projects</p>
+                </div>
+
+                <div class="gallery-controls">
+                    <div class="category-filters">
+                        <button class="category-btn active" data-category="all">
+                            <i class="fas fa-th"></i> All
+                        </button>
+                        <button class="category-btn" data-category="events">
+                            <i class="fas fa-calendar-alt"></i> Events
+                        </button>
+                        <button class="category-btn" data-category="meetings">
+                            <i class="fas fa-users"></i> Meetings
+                        </button>
+                        <button class="category-btn" data-category="projects">
+                            <i class="fas fa-laptop-code"></i> Projects
+                        </button>
+                        <button class="category-btn" data-category="social">
+                            <i class="fas fa-smile"></i> Social
+                        </button>
+                    </div>
+                    
+                    <div class="view-controls">
+                        <button class="view-toggle active" data-view="grid" title="Grid View">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-toggle" data-view="masonry" title="Masonry View">
+                            <i class="fas fa-columns"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="gallery-grid" id="galleryGrid">
+
+                    <!-- Catagories: Events, Meetings, Projects, Social -->
+                    <div class="gallery-item" data-category="meetings" data-year="2025">
+                        <img src="images/meeting_room_2.JPEG" alt="Club Meeting">
+                        <div class="item-overlay">
+                            <div class="item-info">
+                                <h3>Weekly Meeting</h3>
+                                <p>January 2026</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="meetings" data-year="2025">
+                        <img src="images/meeting_room.JPEG" alt="Collaboration Space">
+                        <div class="item-overlay">
+                            <div class="item-info">
+                                <h3>Team Collaboration</h3>
+                                <p>January 2026</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="meetings" data-year="2025">
+                        <img src="images/saif_and_ibrahim.JPEG" alt="Members">
+                        <div class="item-overlay">
+                            <div class="item-info">
+                                <h3>Club Members</h3>
+                                <p>January 2026</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <i class="fas fa-images"></i>
+                    <h3>No photos found</h3>
+                    <p>Try adjusting your filters</p>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-column">
+            <div class="inner-right-column">
+                <div class="dropdown-section active">
+                    <button class="dropdown-header">
+                        <span>Upload Photos</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="upload-info">
+                            <p>Want to contribute photos from club events?</p>
+                            <a href="about.html" class="upload-btn">
+                                <i class="fas fa-upload"></i> Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown-section">
+                    <button class="dropdown-header">
+                        <span>Quick Links</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <a href="events.html">View Events</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="projects.html">Our Projects</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="members.html">Meet the Team</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-section">
+                <div class="social-links-container">
+                    <a href="#" class="social-link-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" class="social-link-item" title="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="social-link-item" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-link-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" id="closeLightbox">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-nav prev" id="prevImage">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-nav next" id="nextImage">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <script src="js/gallery-script.js"></script>
+</body>
+</html>

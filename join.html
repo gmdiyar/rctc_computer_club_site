@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us - RCTC Computer Science Club</title>
+    <link rel="stylesheet" href="css/join-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Form Status Messages */
+        .form-status {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: statusSlideIn 0.3s ease;
+        }
+
+        @keyframes statusSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-status.success {
+            display: block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 2px solid #4caf50;
+        }
+
+        .form-status.error {
+            display: block;
+            background: #ffebee;
+            color: #c62828;
+            border: 2px solid #f44336;
+        }
+
+        .form-status.loading {
+            display: block;
+            background: #e3f2fd;
+            color: #1976d2;
+            border: 2px solid #2196f3;
+        }
+
+        .submit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .fa-spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav class="container navbar">
+            <a href="index.html" class="nav-logo">RCSC</a>
+            <div class="collapse nav-menu">
+                <ul class="navbar-nav">
+                    <a href="events.html" class="nav-events">Events</a>
+                    <a href="projects.html" class="nav-projects">Projects</a>
+                    <a href="join.html" class="nav-join join active">Join</a>
+                    <a href="members.html" class="nav-members">Members</a>
+                    <a href="about.html" class="nav-about">About</a>
+                </ul>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="calendar.html" class="mobile-nav-link"><i class="fas fa-calendar"></i> Calendar</a>
+            <a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a>
+            <a href="gallery.html" class="mobile-nav-link"><i class="fas fa-images"></i> Gallery</a>
+            <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-images"></i> Documentation</a>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <aside class="left-column">
+            <div class="inner-left-column">
+                <h3>Why Join?</h3>
+                <div class="benefit-box">
+                    <i class="fas fa-graduation-cap"></i>
+                    <p>Learn new skills</p>
+                </div>
+                <div class="benefit-box">
+                    <i class="fas fa-users"></i>
+                    <p>Build network</p>
+                </div>
+                <div class="benefit-box">
+                    <i class="fas fa-project-diagram"></i>
+                    <p>Real projects</p>
+                </div>
+                <div class="benefit-box">
+                    <i class="fas fa-trophy"></i>
+                    <p>Competitions</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-container">
+                <h1 class="text-title text-dark">Join Our Club</h1>
+                <p class="text-secondary">Start your journey with us today</p>
+
+                <section class="join-section hero-section">
+                    <div class="hero-content">
+                        <h2>Welcome Future Member!</h2>
+                        <p>Whether you're a complete beginner or an experienced developer, there's a place for you in our community. We welcome all skill levels and backgrounds.</p>
+                    </div>
+                </section>
+
+                <section class="join-section signup-form-section">
+                    <h2 class="section-title text-dark">Ready to Join?</h2>
+                    <div class="signup-form-container">
+                        <form class="signup-form" id="signupForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name *</label>
+                                    <input type="text" name="firstName" required placeholder="John">
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name *</label>
+                                    <input type="text" name="lastName" required placeholder="Doe">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" name="email" required placeholder="john.doe@rctc.edu">
+                            </div>
+                            <div class="form-group">
+                                <label>Student ID</label>
+                                <input type="text" name="studentId" placeholder="RCTC Student ID">
+                            </div>
+                            <div class="form-group">
+                                <label>Program/Major</label>
+                                <input type="text" name="major" placeholder="e.g., Computer Science">
+                            </div>
+                            <div class="form-group">
+                                <label>Experience Level</label>
+                                <select name="experience">
+                                    <option>Beginner - Just starting out</option>
+                                    <option>Intermediate - Some experience</option>
+                                    <option>Advanced - Experienced developer</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Areas of Interest (select all that apply)</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" name="interests" value="Web Development"> Web Development</label>
+                                    <label><input type="checkbox" name="interests" value="Mobile Apps"> Mobile Apps</label>
+                                    <label><input type="checkbox" name="interests" value="Game Development"> Game Development</label>
+                                    <label><input type="checkbox" name="interests" value="Data Science"> Data Science</label>
+                                    <label><input type="checkbox" name="interests" value="AI/Machine Learning"> AI/Machine Learning</label>
+                                    <label><input type="checkbox" name="interests" value="Cybersecurity"> Cybersecurity</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Why do you want to join?</label>
+                                <textarea name="reason" rows="4" placeholder="Tell us what motivated you to join..."></textarea>
+                            </div>
+                            <div class="form-group checkbox-single">
+                                <label>
+                                    <input type="checkbox" required>
+                                    I agree to the club guidelines and code of conduct
+                                </label>
+                            </div>
+                            
+                            <!-- Status Message -->
+                            <div id="formStatus" class="form-status"></div>
+                            
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-user-plus"></i>
+                                Submit Application
+                            </button>
+                        </form>
+                    </div>
+                </section>
+
+                <section class="join-section requirements-section">
+                    <h2 class="section-title text-dark">Requirements</h2>
+                    <div class="requirements-grid">
+                        <div class="requirement-card">
+                            <div class="req-number">01</div>
+                            <h3>Be an RCTC Student</h3>
+                            <p>Currently enrolled at Rochester Community and Technical College</p>
+                        </div>
+                        <div class="requirement-card">
+                            <div class="req-number">02</div>
+                            <h3>Have Interest in Tech</h3>
+                            <p>Passionate about computer science, programming, or technology</p>
+                        </div>
+                        <div class="requirement-card">
+                            <div class="req-number">03</div>
+                            <h3>Commit to Learning</h3>
+                            <p>Willing to learn, collaborate, and contribute to the community</p>
+                        </div>
+                        <div class="requirement-card">
+                            <div class="req-number">04</div>
+                            <h3>Respect Others</h3>
+                            <p>Be kind, inclusive, and supportive of all members</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="join-section faq-section">
+                    <h2 class="section-title text-dark">Frequently Asked Questions</h2>
+                    <div class="faq-container">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Do I need programming experience?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>No! We welcome members of all skill levels. We have workshops and resources specifically designed for beginners.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>How much time commitment is required?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>It's flexible! Attend as many events as you'd like. We recommend at least one meeting per month to stay engaged.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Is there a membership fee?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>No, membership is completely free for all RCTC students!</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>When do you meet?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We have weekly meetings every other Friday at 4:00 PM in room SH203 – Singly Hall. Check our Events page for the full schedule.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <aside class="right-column">
+            <div class="inner-right-column">
+                <div class="dropdown-section active">
+                    <button class="dropdown-header">
+                        <span>Quick Links</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">
+                                <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="about.html"><i class="fas fa-info-circle"></i> About the Club</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="events.html"><i class="fas fa-calendar-alt"></i> Upcoming Events</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="projects.html"><i class="fas fa-project-diagram"></i> View Projects</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="members.html"><i class="fas fa-users"></i> Current Members</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="dropdown-section">
+                    <button class="dropdown-header">
+                        <span>Get in Touch</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <h4><i class="fa-brands fa-discord"></i> Discord</h4>
+                            <p>Join our community server for real-time chat</p>
+                            <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" style="color: var(--two); font-weight: 600; font-size: 13px;">
+                                Join Server →
+                            </a>
+                        </div>
+                        <div class="dropdown-item">
+                            <h4><i class="fas fa-envelope"></i> Email</h4>
+                            <p>rctccsclub@gmail.com</p>
+                            <p style="font-size: 11px; margin-top: 5px;">We reply within 24 hours</p>
+                        </div>
+                        <div class="dropdown-item">
+                            <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+                            <p>SH203 - Singly Hall</p>
+                            <p>Rochester Community & Technical College</p>
+                        </div>
+                        <div class="dropdown-item">
+                            <h4><i class="fas fa-clock"></i> Office Hours</h4>
+                            <p>Friday: 4:00 PM - 6:00 PM</p>
+                            <p style="font-size: 11px; margin-top: 5px;">Or by appointment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social-section">
+                <div class="social-links-container">
+                    <a href="#" class="social-link-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" class="social-link-item" title="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="social-link-item" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-link-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js/join-script.js"></script>
+</body>
+</html>

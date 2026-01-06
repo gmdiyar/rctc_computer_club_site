@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - RCTC Computer Science Club</title>
+    <link rel="stylesheet" href="css/documentation-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <header id="header">
+        <nav class="container navbar">
+            <a href="index.html" class="nav-logo">RCSC</a>
+            <div class="collapse nav-menu">
+                <ul class="navbar-nav">
+                    <a href="events.html" class="nav-events">Events</a>
+                    <a href="projects.html" class="nav-projects">Projects</a>
+                    <a href="join.html" class="nav-join join">Join</a>
+                    <a href="members.html" class="nav-members">Members</a>
+                    <a href="about.html" class="nav-about">About</a>
+                </ul>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="calendar.html" class="mobile-nav-link"><i class="fas fa-calendar"></i> Calendar</a>
+            <a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a>
+            <a href="gallery.html" class="mobile-nav-link"><i class="fas fa-images"></i> Gallery</a>
+            <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-images"></i> Documentation</a>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <aside class="left-column">
+            <div class="inner-left-column">
+                <h3>Quick Stats</h3>
+                <div class="stat-box">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Documents</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Minutes</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Policies</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-container">
+                <div class="page-header">
+                    <h1 class="text-title text-dark">Club Documentation</h1>
+                    <p class="text-secondary">Official documents, policies, and meeting minutes</p>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="docs-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="docSearch" placeholder="Search documents...">
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">
+                            <i class="fas fa-th"></i> All
+                        </button>
+                        <button class="filter-btn" data-filter="governance">
+                            <i class="fas fa-gavel"></i> Governance
+                        </button>
+                        <button class="filter-btn" data-filter="minutes">
+                            <i class="fas fa-clipboard"></i> Minutes
+                        </button>
+                        <button class="filter-btn" data-filter="policies">
+                            <i class="fas fa-shield-alt"></i> Policies
+                        </button>
+                        <button class="filter-btn" data-filter="reports">
+                            <i class="fas fa-chart-line"></i> Reports
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Governance Documents Section -->
+                <section class="docs-section" data-category="governance">
+                    <div class="section-header">
+                        <div class="section-icon governance">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Governance Documents</h2>
+                            <p class="section-description">Foundational documents that guide club operations</p>
+                        </div>
+                    </div>
+                    
+                    <div class="docs-grid">
+                        <div class="doc-card" data-category="governance">
+                            <div class="doc-card-header">
+                                <div class="doc-icon">
+                                    <i class="fas fa-scroll"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3>Club Constitution</h3>
+                                    <p class="doc-meta">
+                                        <span><i class="fas fa-calendar"></i> Updated: MONTH 2025</span>
+                                        <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="doc-description">Official constitution outlining club structure, membership, and operations</p>
+                            <div class="doc-actions">
+                                <button class="btn-view" onclick="viewDocument('constitution')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-download" onclick="downloadDocument('constitution')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="doc-card" data-category="governance">
+                            <div class="doc-card-header">
+                                <div class="doc-icon">
+                                    <i class="fas fa-file-contract"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3>Club Bylaws</h3>
+                                    <p class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> Updated: MONTH 2025</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </p>
+                                </div>
+                            </div>
+                            <p class="doc-description">Detailed rules and procedures for club governance and decision-making</p>
+                            <div class="doc-actions">
+                                <button class="btn-view" onclick="viewDocument('bylaws')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-download" onclick="downloadDocument('bylaws')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="doc-card" data-category="governance">
+                            <div class="doc-card-header">
+                                <div class="doc-icon">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3>Officer Roles & Responsibilities</h3>
+                                    <p class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> Updated: MONTH 2026</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </p>
+                                </div>
+                            </div>
+                            <p class="doc-description">Detailed descriptions of officer positions and their duties</p>
+                            <div class="doc-actions">
+                                <button class="btn-view" onclick="viewDocument('roles')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-download" onclick="downloadDocument('roles')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Meeting Minutes Section -->
+                <section class="docs-section" data-category="minutes">
+                    <div class="section-header">
+                        <div class="section-icon minutes">
+                            <i class="fas fa-clipboard"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Meeting Minutes</h2>
+                            <p class="section-description">Official records of club meetings and decisions</p>
+                        </div>
+                    </div>
+                    
+                    <div class="docs-grid">
+                        <div class="doc-card" data-category="minutes">
+                            <div class="doc-card-header">
+                                <div class="doc-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3>General Meeting - MONTH 2026</h3>
+                                    <p class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> MONTH 2026</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </p>
+                                </div>
+                            </div>
+                            <p class="doc-description">Spring semester kickoff, project planning, and announcements</p>
+                            <div class="doc-actions">
+                                <button class="btn-view" onclick="viewDocument('minutes-jan-2026')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-download" onclick="downloadDocument('minutes-jan-2026')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="doc-card" data-category="minutes">
+                            <div class="doc-card-header">
+                                <div class="doc-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3>General Meeting - MONTH 2025</h3>
+                                    <p class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> MONTH, 2025</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </p>
+                                </div>
+                            </div>
+                            <p class="doc-description">Fall semester wrap-up and year-end celebration planning</p>
+                            <div class="doc-actions">
+                                <button class="btn-view" onclick="viewDocument('minutes-dec-2025')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-download" onclick="downloadDocument('minutes-dec-2025')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="doc-card" data-category="minutes">
+                            <div class="doc-card-header">
+                                <div class="doc-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3>Officer Meeting - MONTH 2025</h3>
+                                    <p class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> MONTH, 2025</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </p>
+                                </div>
+                            </div>
+                            <p class="doc-description">Budget review and event planning for spring semester</p>
+                            <div class="doc-actions">
+                                <button class="btn-view" onclick="viewDocument('minutes-nov-2025')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-download" onclick="downloadDocument('minutes-nov-2025')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="view-all-btn">
+                        <i class="fas fa-history"></i> View All Meeting Minutes
+                    </button>
+                </section>
+
+                <!-- Policies Section -->
+                <section class="docs-section" data-category="policies">
+                    <div class="section-header">
+                        <div class="section-icon policies">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Policies & Guidelines</h2>
+                            <p class="section-description">Club policies and behavioral guidelines</p>
+                        </div>
+                    </div>
+                    
+                    <div class="docs-grid">
+                        <div class="doc-card" data-category="policies">
+                            <div class="doc-card-header">
+                                <div class="doc-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3>Code of Conduct</h3>
+                                    <p class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> Updated: MONTH 2025</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </p>
+                                </div>
+                            </div>
+                            <p class="doc-description">Expected behavior and community standards for all members</p>
+                            <div class="doc-actions">
+                                <button class="btn-view" onclick="viewDocument('code-of-conduct')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-download" onclick="downloadDocument('code-of-conduct')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="doc-card" data-category="policies">
+                            <div class="doc-card-header">
+                                <div class="doc-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3>Privacy Policy</h3>
+                                    <p class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> Updated: MONTH 2026</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </p>
+                                </div>
+                            </div>
+                            <p class="doc-description">How we collect, use, and protect member information</p>
+                            <div class="doc-actions">
+                                <button class="btn-view" onclick="viewDocument('privacy')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-download" onclick="downloadDocument('privacy')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="doc-card" data-category="policies">
+                            <div class="doc-card-header">
+                                <div class="doc-icon">
+                                    <i class="fas fa-money-check-alt"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3>Financial Policy</h3>
+                                    <p class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> Updated: Sep 2025</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </p>
+                                </div>
+                            </div>
+                            <p class="doc-description">Budget management, reimbursement procedures, and financial transparency</p>
+                            <div class="doc-actions">
+                                <button class="btn-view" onclick="viewDocument('financial')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-download" onclick="downloadDocument('financial')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Reports Section -->
+                <section class="docs-section" data-category="reports">
+                    <div class="section-header">
+                        <div class="section-icon reports">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Reports & Presentations</h2>
+                            <p class="section-description">Annual reports and presentations to the college</p>
+                        </div>
+                    </div>
+                    
+                    <div class="docs-grid">
+                        <div class="doc-card" data-category="reports">
+                            <div class="doc-card-header">
+                                <div class="doc-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3>Annual Report 2025</h3>
+                                    <p class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> Dec 2025</span>
+                                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                                </p>
+                                </div>
+                            </div>
+                            <p class="doc-description">Year in review: achievements, membership growth, and financial summary</p>
+                            <div class="doc-actions">
+                                <button class="btn-view" onclick="viewDocument('annual-2025')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-download" onclick="downloadDocument('annual-2025')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="doc-card" data-category="reports">
+                            <div class="doc-card-header">
+                                <div class="doc-icon">
+                                    <i class="fas fa-presentation"></i>
+                                </div>
+                                <div class="doc-info">
+                                    <h3>Budget Proposal 2026</h3>
+                                    <p class="doc-meta">
+                                    <span><i class="fas fa-calendar"></i> Jan 2026</span>
+                                    <span><i class="fas fa-file-powerpoint"></i> PPTX</span>
+                                </p>
+                                </div>
+                            </div>
+                            <p class="doc-description">Proposed budget for 2026 activities and events</p>
+                            <div class="doc-actions">
+                                <button class="btn-view" onclick="viewDocument('budget-2026')">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn-download" onclick="downloadDocument('budget-2026')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Empty State (hidden by default) -->
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>No documents found</h3>
+                    <p>Try adjusting your search or filter</p>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-column">
+            <div class="inner-right-column">
+                <div class="dropdown-section active">
+                    <button class="dropdown-header">
+                        <span>Document Request</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="request-info">
+                            <p>Need a specific document not listed here?</p>
+                            <a href="about.html" class="request-btn">
+                                <i class="fas fa-envelope"></i> Request Document
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown-section">
+                    <button class="dropdown-header">
+                        <span>Quick Links</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <a href="about.html">About the Club</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="join.html">Join Us</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="members.html">Meet Officers</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown-section">
+                    <button class="dropdown-header">
+                        <span>Archive Access</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="archive-info">
+                            <p>Access archived documents from previous years</p>
+                            <a href="#" class="archive-btn">
+                                <i class="fas fa-archive"></i> View Archive
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-section">
+                <div class="social-links-container">
+                    <a href="#" class="social-link-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" class="social-link-item" title="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="social-link-item" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-link-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js\document-script.js"></script>
+</body>
+</html>

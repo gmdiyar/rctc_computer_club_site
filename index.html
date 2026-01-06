@@ -1,193 +1,393 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>RCTC Computer Science Club</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <meta name="description" content="Official website of the RCTC Computer Science Club.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/index-style.css">
-    </head>
-    <body>
-        <header id="header">
-            <nav class="container navbar">
-                <a href="/index.html" class="nav-logo">RCSC</a>
-                <div class="collapse nav-menu">
-                    <ul class="navbar-nav">
-                        <a href="#" class="nav-events">Events</a>
-                        <a href="#" class="nav-about">Projects</a>
-                        <a href="#" class="nav-projects join">Join</a>
-                        <a href="members.html" class="nav-members">Members</a>
-                        <a href="#" class="nav-projects">About</a>
-                    </ul>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RCTC Computer Science Club - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="description" content="Official website of the RCTC Computer Science Club. Join us for events, projects, and collaboration.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/index-style.css">
+</head>
+<body>
+    <header id="header">
+        <nav class="container navbar">
+            <a href="index.html" class="nav-logo">RCSC</a>
+            <div class="collapse nav-menu">
+                <ul class="navbar-nav">
+                    <a href="events.html" class="nav-events">Events</a>
+                    <a href="projects.html" class="nav-projects-link">Projects</a>
+                    <a href="join.html" class="nav-join join">Join</a>
+                    <a href="members.html" class="nav-members">Members</a>
+                    <a href="#" class="nav-about contact-trigger">Contact</a>
+                </ul>
+            </div>
+            
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="calendar.html" class="mobile-nav-link"><i class="fas fa-calendar"></i> Calendar</a>
+            <a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a>
+            <a href="gallery.html" class="mobile-nav-link"><i class="fas fa-images"></i> Gallery</a>
+            <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-images"></i> Documentation</a>
+            <a href="#" class="mobile-nav-link contact-trigger"><i class="fas fa-envelope"></i> Contact Us</a>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <aside class="left-column">
+            <div class="inner-left-column">
+                <h3>Latest News</h3>
+                <div class="news-item">
+                    <span class="news-icon"><i class="fas fa-bullhorn"></i></span>
+                    <div class="news-content">
+                        <h4>PC Refurbishing Sale</h4>
+                        <p>Join us as we learn to reset used PC's and resell them to the community!</p>
+                        <a href="events.html" class="news-link">Learn More →</a>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <span class="news-icon"><i class="fas fa-calendar-alt"></i></span>
+                    <div class="news-content">
+                        <h4>Biweekly Meetings</h4>
+                        <p>Every other Friday from 4:00PM to 6:00 PM in SH203 – Singly Hall</p>
+                        <a href="calendar.html" class="news-link">View Calendar →</a>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <span class="news-icon"><i class="fas fa-code"></i></span>
+                    <div class="news-content">
+                        <h4>Our projects</h4>
+                        <p>Check out our latest collaborative projects</p>
+                        <a href="projects.html" class="news-link">View Projects →</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-container">
+                <!-- Hero Section -->
+                <section class="hero-section">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="title-line">RCTC Computer Science Club</span>
+                        </h1>
+                        <p class="hero-subtitle">Cultivating an environment for like-minded students passionate about tech.</p>
+                        <div class="hero-buttons">
+                            <a href="join.html" class="btn-primary">
+                                <span>Join Our Community</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="about.html" class="btn-secondary">
+                                <span>Learn More</span>
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Image Slider -->
+                <section class="slider-section">
+                    <h2 class="section-title">Our Community in Action</h2>
+                    <div class="slider-wrapper">
+                        <div class="slider" id="slider">
+                            <div class="slide active">
+                                <img src="images/meeting_room_2.JPEG" alt="Club Meeting Room">
+                                <div class="slide-caption"></div>
+                            </div>
+                            <div class="slide">
+                                <img src="images/meeting_room.JPEG" alt="Collaboration Space">
+                                <div class="slide-caption"></div>
+                            </div>
+                            <div class="slide">
+                                <img src="images/saif_and_ibrahim.JPEG" alt="Club Members">
+                                <div class="slide-caption"></div>
+                            </div>
+                        </div>
+                        <button class="slider-btn prev" id="prevSlide">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-btn next" id="nextSlide">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="slider-dots" id="sliderDots">
+                            <span class="dot active" data-slide="0"></span>
+                            <span class="dot" data-slide="1"></span>
+                            <span class="dot" data-slide="2"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section class="about-section">
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <h2 class="section-title">About Our Club</h2>
+                            <p class="about-description">
+                                We are a dynamic community at Rochester Community and Technical College dedicated to 
+                                fostering innovating, learning, and collaborating in computer science. 
+                                From software development to cybersecurity, we explore it all.
+                            </p>
+                            <p class="about-description">
+                                Whether you're attending RCTC or Winona State University Rochester, if you have a 
+                                passion for technology, you belong here.
+                            </p>
+                            <a href="about.html" class="text-link">
+                                Learn more about us <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="about-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <h3>Hands-On Projects</h3>
+                                <p>Build real applications and gain practical experience</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3>Peer Collaboration</h3>
+                                <p>Work with fellow students on exciting challenges</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3>Skill Development</h3>
+                                <p>Learn new technologies through workshops and events</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <h3>Career Preparation</h3>
+                                <p>Build your portfolio and network with industry professionals</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- What We Do Section -->
+                <section class="activities-section">
+                    <h2 class="section-title">What We Do</h2>
+                    <div class="activities-grid">
+                        <div class="activity-card">
+                            <div class="activity-icon workshop">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h3>Workshops</h3>
+                            <p>Weekly technical workshops covering programming languages, frameworks, and tools</p>
+                            <a href="events.html" class="activity-link">View Workshops →</a>
+                        </div>
+                        <div class="activity-card">
+                            <div class="activity-icon hackathon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Hackathons</h3>
+                            <p>Competitive coding events where you can showcase your skills and win prizes</p>
+                            <a href="events.html" class="activity-link">Upcoming Events →</a>
+                        </div>
+                        <div class="activity-card">
+                            <div class="activity-icon projects">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <h3>Group Projects</h3>
+                            <p>Collaborative projects to build real-world applications and expand your portfolio</p>
+                            <a href="projects.html" class="activity-link">View Projects →</a>
+                        </div>
+                        <div class="activity-card">
+                            <div class="activity-icon social">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3>Social Events</h3>
+                            <p>Game nights, tech talks, and networking opportunities to connect with peers</p>
+                            <a href="events.html" class="activity-link">See Calendar →</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CTA Section -->
+                <section class="cta-section">
+                    <div class="cta-content">
+                        <h2>Ready to Get Started?</h2>
+                        <p>Join a community of passionate developers and tech enthusiasts at RCTC</p>
+                        <div class="cta-buttons">
+                            <a href="join.html" class="btn-cta-primary">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Join the Club</span>
+                            </a>
+                            <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" class="btn-cta-secondary">
+                                <i class="fab fa-discord"></i>
+                                <span>Join Our Discord</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <aside class="right-column">
+            <div class="inner-right-column">
+                <div class="dropdown-section active">
+                    <button class="dropdown-header">
+                        <span>Upcoming Events</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item event-item">
+                            <div class="event-date">
+                                <span class="month">JAN</span>
+                                <span class="day">16</span>
+                            </div>
+                            <div class="event-info">
+                                <h4>First Meeting of the Sprint Semester</h4>
+                                <p><i class="fas fa-clock"></i> 4:00PM - 6:00 PM</p>
+                                <a href="events.html" class="event-link">Details →</a>
+                            </div>
+                        </div>
+                        <a href="calendar.html" class="view-all-link">View Full Calendar →</a>
+                    </div>
+                </div>
+
+                <div class="dropdown-section active">
+                    <button class="dropdown-header">
+                        <span>Quick Links</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <a href="https://github.com/orgs/RCTC-ComputerClub/dashboard" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Organization</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="calendar.html"><i class="fas fa-calendar"></i> Meeting Schedule</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#" class="contact-trigger"><i class="fas fa-envelope"></i> Contact Us</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="resources.html"><i class="fas fa-book"></i> Learning Resources</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown-section">
+                    <button class="dropdown-header">
+                        <span>Featured Projects</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item project-item">
+                            <h4><i class="fas fa-globe"></i> Club Website</h4>
+                            <p class="project-status active">Active</p>
+                        </div>
+                        <a href="projects.html" class="view-all-link">View All Projects →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-section">
+                <div class="social-links-container">
+                    <a href="#" class="social-link-item" title="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" rel="noopener noreferrer" class="social-link-item" title="Discord">
+                        <i class="fa-brands fa-discord"></i>
+                    </a>
+                    <a href="#" class="social-link-item" title="YouTube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-link-item" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h2>Contact Us</h2>
+                <p>We'd love to hear from you! Send us a message.</p>
+            </div>
+            
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="contactName">Your Name</label>
+                    <input 
+                        type="text" 
+                        id="contactName" 
+                        name="name" 
+                        required 
+                        placeholder="Enter your name"
+                    >
                 </div>
                 
-                <!-- Hamburger Menu Button -->
-                <button class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </nav>
-
-            <!-- Mobile Menu Dropdown -->
-            <div class="mobile-menu" id="mobileMenu">
-                <a href="#" class="mobile-nav-link">#</a>
-                <a href="#" class="mobile-nav-link">#</a>
-                <a href="#" class="mobile-nav-link">#</a>
-                <a href="#" class="mobile-nav-link">#</a>
-                <a href="#" class="mobile-nav-link">#</a>
-                <!-- <div class="mobile-social">
-                    <a href="#" class="mobile-social-link"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" class="mobile-social-link"><i class="fa-brands fa-discord"></i></a>
-                    <a href="#" class="mobile-social-link"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" class="mobile-social-link"><i class="fa-brands fa-instagram"></i></a>
-                </div> -->
-            </div>
-        </header>
-
-        <div class="main-wrapper">
-            <aside class="left-column">
-                <div class="inner-left-column">
-                    <h3>News & Updates</h3>
-        <p class="news"><span class="blink-arrow">►</span> Welcome to the RCTC Computer Science Club! Check out our latest events and projects.</p>
-        <p class="news"><span class="blink-arrow">►</span> We meet every Friday at 4:00 in room SH-203</p>
-        <p class="news"><span class="blink-arrow">►</span> Join us for our upcoming hackathon!</p>
+                <div class="form-group">
+                    <label for="contactEmail">Your Email</label>
+                    <input 
+                        type="email" 
+                        id="contactEmail" 
+                        name="email" 
+                        required 
+                        placeholder="your.email@example.com"
+                    >
                 </div>
-            </aside>
-
-            <main class="main-content">
-                <div class="content-container">
-                    <h1 class="text-title text-dark">Welcome to the Computer Science Club of RCTC</h1>
-                    <p class="text-secondary">A community of programmers dedicated to technology, hands-on education, and engineering.</p>
-                    
-                    <div class="slider-wrapper">
-                        <div class="slider">
-                            <img id="slide-1" src="images/meeting_room_2.JPEG" alt="Meeting Room">
-                            <img id="slide-2" src="images/meeting_room.JPEG" alt="Meeting Room">
-                            <img id="slide-3" src="images/saif_and_ibrahim.JPEG" alt="Club Members">
-                        </div>
-                        <div class="slider-nav">
-                            <a href="#slide-1"></a>
-                            <a href="#slide-2"></a>
-                            <a href="#slide-3"></a>
-                        </div>
-                    </div>
-
-                    <section class="about-section">
-                        <h2 class="text-title text-dark">About Our Club</h2>
-                        <p>We are a club belonging to the Rochester Community and Technical College in Rochester, MN. We do it all from software to hardware, cyber desense and offense, and much more.
-                            If you attend RCTC to Winona State University, Rochester, and have an interest in anything computer/tech, we welcome you.
-                        </p>
-                    </section>
+                
+                <div class="form-group">
+                    <label for="contactTopic">Topic</label>
+                    <select id="contactTopic" name="topic" required>
+                        <option value="">Select a topic...</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="membership">Membership Question</option>
+                        <option value="events">Event Information</option>
+                        <option value="projects">Project Collaboration</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
-            </main>
-
-            <aside class="right-column">
-                <div class="inner-right-column">
-                    <!-- Dropdown Section 1 -->
-                    <div class="dropdown-section">
-                        <button class="dropdown-header">
-                            <span>Upcoming Events</span>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                        <div class="dropdown-content">
-                            <div class="dropdown-item">
-                                <h4>Hackathon 2025</h4>
-                                <p>January 15, 2025</p>
-                            </div>
-                            <div class="dropdown-item">
-                                <h4>Python Workshop</h4>
-                                <p>January 22, 2025</p>
-                            </div>
-                            <div class="dropdown-item">
-                                <h4>Guest Speaker: AI Ethics</h4>
-                                <p>February 5, 2025</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Dropdown Section 2 -->
-                    <div class="dropdown-section">
-                        <button class="dropdown-header">
-                            <span>Resources</span>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                        <div class="dropdown-content">
-                            <div class="dropdown-item">
-                                <a href="#">Student Portal</a>
-                            </div>
-                            <div class="dropdown-item">
-                                <a href="#">Code Repository</a>
-                            </div>
-                            <div class="dropdown-item">
-                                <a href="#">Learning Materials</a>
-                            </div>
-                            <div class="dropdown-item">
-                                <a href="#">Discord Server</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Dropdown Section 3 -->
-                    <div class="dropdown-section">
-                        <button class="dropdown-header">
-                            <span>Quick Links</span>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                        <div class="dropdown-content">
-                            <div class="dropdown-item">
-                                <a href="#">Join the Club</a>
-                            </div>
-                            <div class="dropdown-item">
-                                <a href="#">Meeting Schedule</a>
-                            </div>
-                            <div class="dropdown-item">
-                                <a href="#">Contact Us</a>
-                            </div>
-                            <div class="dropdown-item">
-                                <a href="#">FAQs</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Dropdown Section 4 -->
-                    <div class="dropdown-section">
-                        <button class="dropdown-header">
-                            <span>Club Projects</span>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                        <div class="dropdown-content">
-                            <div class="dropdown-item">
-                                <h4>Website Redesign</h4>
-                                <p>Status: In Progress</p>
-                            </div>
-                            <div class="dropdown-item">
-                                <h4>Mobile App Development</h4>
-                                <p>Status: Planning</p>
-                            </div>
-                            <div class="dropdown-item">
-                                <h4>AI Chatbot</h4>
-                                <p>Status: Completed</p>
-                            </div>
-                        </div>
-                    </div>
+                
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea 
+                        id="contactMessage" 
+                        name="message" 
+                        rows="6" 
+                        required 
+                        placeholder="Type your message here..."
+                    ></textarea>
                 </div>
-                <!-- Social Links Section -->
-                <div class="social-section">
-                    <div class="social-links-container">
-                        <a href="#" class="social-link-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                        <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" rel="no-referrer noopener" class="social-link-item" title="Discord"><i class="fa-brands fa-discord"></i></a>
-                        <a href="#" class="social-link-item" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" class="social-link-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
                 </div>
-            </aside>
+            </form>
+            
+            <div id="formStatus" class="form-status"></div>
         </div>
+    </div>
 
-        <script src="js/scripts.js" async defer></script>
-    </body>
+    <script src="js/scripts.js"></script>
+</body>
 </html>

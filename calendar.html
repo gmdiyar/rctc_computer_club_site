@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Calendar - RCTC Computer Science Club</title>
+    <link rel="stylesheet" href="css/calendar-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <header id="header">
+        <nav class="container navbar">
+            <a href="index.html" class="nav-logo">RCSC</a>
+            <div class="collapse nav-menu">
+                <ul class="navbar-nav">
+                    <a href="events.html" class="nav-events">Events</a>
+                    <a href="projects.html" class="nav-projects">Projects</a>
+                    <a href="join.html" class="nav-join join">Join</a>
+                    <a href="members.html" class="nav-members">Members</a>
+                    <a href="about.html" class="nav-about">About</a>
+                </ul>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="calendar.html" class="mobile-nav-link"><i class="fas fa-calendar"></i> Calendar</a>
+            <a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a>
+            <a href="gallery.html" class="mobile-nav-link"><i class="fas fa-images"></i> Gallery</a>
+            <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-images"></i> Documentation</a>
+        </div>
+    </header>
+
+    <div class="calendar-wrapper">
+        <!-- Sidebar -->
+        <aside class="calendar-sidebar">
+            <div class="sidebar-section">
+                <h3>View Options</h3>
+                <div class="view-buttons">
+                    <button class="view-mode-btn active" data-view="month">
+                        <i class="fas fa-calendar"></i> Month
+                    </button>
+                    <button class="view-mode-btn" data-view="week">
+                        <i class="fas fa-calendar-week"></i> Week
+                    </button>
+                    <button class="view-mode-btn" data-view="day">
+                        <i class="fas fa-calendar-day"></i> Day
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Quick Actions</h3>
+                <button class="action-btn today-btn">
+                    <i class="fas fa-calendar-check"></i> Today
+                </button>
+                <a href="events.html" class="action-btn events-link">
+                    <i class="fas fa-arrow-left"></i> Back to Events
+                </a>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Event Categories</h3>
+                <div class="category-filters">
+                    <label class="category-filter">
+                        <input type="checkbox" checked data-category="workshop">
+                        <span class="color-dot workshop"></span>
+                        <span>Workshops</span>
+                    </label>
+                    <label class="category-filter">
+                        <input type="checkbox" checked data-category="hackathon">
+                        <span class="color-dot hackathon"></span>
+                        <span>Hackathons</span>
+                    </label>
+                    <label class="category-filter">
+                        <input type="checkbox" checked data-category="social">
+                        <span class="color-dot social"></span>
+                        <span>Social</span>
+                    </label>
+                    <label class="category-filter">
+                        <input type="checkbox" checked data-category="meeting">
+                        <span class="color-dot meeting"></span>
+                        <span>Meetings</span>
+                    </label>
+                    <label class="category-filter">
+                        <input type="checkbox" checked data-category="deadline">
+                        <span class="color-dot deadline"></span>
+                        <span>Deadlines</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="sidebar-section mini-events-list">
+                <h3>Upcoming Events</h3>
+                <div id="upcomingEventsList" class="upcoming-list">
+                    <!-- Will be populated by JS -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Calendar Area -->
+        <main class="calendar-main">
+            <!-- Calendar Controls -->
+            <div class="calendar-controls">
+                <div class="controls-left">
+                    <button class="nav-btn" id="prevPeriod">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-btn" id="nextPeriod">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <h2 class="current-period" id="currentPeriod">January 2026</h2>
+                </div>
+                <div class="controls-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="eventSearch" placeholder="Search events...">
+                    </div>
+                    <button class="icon-btn" id="shareCalendar" title="Share Calendar">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button class="icon-btn" id="exportCalendar" title="Download Calendar Image">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Calendar Grid Container -->
+            <div class="calendar-container">
+                <!-- Month View -->
+                <div id="monthView" class="calendar-view active">
+                    <div class="calendar-header-row">
+                        <div class="header-cell">Sun</div>
+                        <div class="header-cell">Mon</div>
+                        <div class="header-cell">Tue</div>
+                        <div class="header-cell">Wed</div>
+                        <div class="header-cell">Thu</div>
+                        <div class="header-cell">Fri</div>
+                        <div class="header-cell">Sat</div>
+                    </div>
+                    <div class="calendar-grid" id="monthGrid">
+                        <!-- Will be populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Week View -->
+                <div id="weekView" class="calendar-view">
+                    <div class="week-header" id="weekHeader">
+                        <!-- Will be populated by JS -->
+                    </div>
+                    <div class="week-grid" id="weekGrid">
+                        <!-- Will be populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Day View -->
+                <div id="dayView" class="calendar-view">
+                    <div class="day-header" id="dayHeader">
+                        <!-- Will be populated by JS -->
+                    </div>
+                    <div class="day-timeline" id="dayTimeline">
+                        <!-- Will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Event Detail Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content event-detail-modal">
+            <button class="modal-close" id="closeEventModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="event-detail-header" id="eventDetailHeader">
+                <!-- Populated by JS -->
+            </div>
+            <div class="event-detail-body" id="eventDetailBody">
+                <!-- Populated by JS -->
+            </div>
+            <div class="event-detail-actions">
+                <button class="btn-primary" id="rsvpEventBtn">
+                    <i class="fas fa-check"></i> RSVP to Event
+                </button>
+                <button class="btn-secondary" id="addToCalendarBtn">
+                    <i class="fas fa-calendar-plus"></i> Add to My Calendar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="js/calendar-script.js"></script>
+</body>
+</html>

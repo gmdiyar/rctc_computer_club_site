@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Resources - RCTC Computer Science Club</title>
+    <link rel="stylesheet" href="css/resources-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header id="header">
+        <nav class="container navbar">
+            <a href="index.html" class="nav-logo">RCSC</a>
+            <div class="collapse nav-menu">
+                <ul class="navbar-nav">
+                    <a href="events.html" class="nav-events">Events</a>
+                    <a href="projects.html" class="nav-projects">Projects</a>
+                    <a href="join.html" class="nav-join join">Join</a>
+                    <a href="members.html" class="nav-members">Members</a>
+                    <a href="about.html" class="nav-about">About</a>
+                </ul>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="calendar.html" class="mobile-nav-link"><i class="fas fa-calendar"></i> Calendar</a>
+            <a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a>
+            <a href="gallery.html" class="mobile-nav-link"><i class="fas fa-images"></i> Gallery</a>
+            <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-images"></i> Documentation</a>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <aside class="left-column">
+            <div class="inner-left-column">
+                <h3>Quick Navigation</h3>
+                <nav class="resource-nav">
+                    <a href="#programming" class="nav-item">Programming</a>
+                    <a href="#webdev" class="nav-item">Web Development</a>
+                    <a href="#datastructures" class="nav-item">Data Structures</a>
+                    <a href="#algorithms" class="nav-item">Algorithms</a>
+                    <a href="#databases" class="nav-item">Databases</a>
+                    <a href="#tools" class="nav-item">Dev Tools</a>
+                    <a href="#career" class="nav-item">Career Prep</a>
+                </nav>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-container">
+                <h1 class="text-title text-dark">Learning Resources</h1>
+                <p class="text-secondary">Curated collection of resources for computer science learning</p>
+
+                <!-- Programming Languages Section -->
+                <section id="programming" class="resource-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-code"></i></div>
+                        <h2 class="section-title text-dark">Programming Languages</h2>
+                    </div>
+                    
+                    <div class="subsection">
+                        <h3 class="subsection-title">Python</h3>
+                        <div class="resources-grid">
+                            <div class="resource-card">
+                                <div class="resource-icon"><i class="fab fa-python"></i></div>
+                                <h4>Python.org Official Tutorial</h4>
+                                <p>Official Python documentation and beginner-friendly tutorial</p>
+                                <div class="resource-meta">
+                                    <span class="difficulty beginner">Beginner</span>
+                                    <span class="type">Documentation</span>
+                                </div>
+                                <a href="https://docs.python.org/3/tutorial/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                            
+                            <div class="resource-card">
+                                <div class="resource-icon"><i class="fas fa-book"></i></div>
+                                <h4>Automate the Boring Stuff</h4>
+                                <p>Practical Python programming for total beginners</p>
+                                <div class="resource-meta">
+                                    <span class="difficulty beginner">Beginner</span>
+                                    <span class="type">Book/Course</span>
+                                </div>
+                                <a href="https://automatetheboringstuff.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                            
+                            <div class="resource-card">
+                                <div class="resource-icon"><i class="fas fa-video"></i></div>
+                                <h4>Python for Everybody (Coursera)</h4>
+                                <p>Comprehensive Python course by Dr. Chuck</p>
+                                <div class="resource-meta">
+                                    <span class="difficulty beginner">Beginner</span>
+                                    <span class="type">Video Course</span>
+                                </div>
+                                <a href="https://www.py4e.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">JavaScript</h3>
+                        <div class="resources-grid">
+                            <div class="resource-card">
+                                <div class="resource-icon"><i class="fab fa-js"></i></div>
+                                <h4>JavaScript.info</h4>
+                                <p>Modern JavaScript tutorial from basics to advanced</p>
+                                <div class="resource-meta">
+                                    <span class="difficulty beginner">Beginner</span>
+                                    <span class="type">Tutorial</span>
+                                </div>
+                                <a href="https://javascript.info/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                            
+                            <div class="resource-card">
+                                <div class="resource-icon"><i class="fas fa-laptop-code"></i></div>
+                                <h4>FreeCodeCamp JS Course</h4>
+                                <p>Interactive JavaScript curriculum with projects</p>
+                                <div class="resource-meta">
+                                    <span class="difficulty beginner">Beginner</span>
+                                    <span class="type">Interactive</span>
+                                </div>
+                                <a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                            
+                            <div class="resource-card">
+                                <div class="resource-icon"><i class="fab fa-mdn"></i></div>
+                                <h4>MDN Web Docs</h4>
+                                <p>Comprehensive JavaScript reference and guides</p>
+                                <div class="resource-meta">
+                                    <span class="difficulty all-levels">All Levels</span>
+                                    <span class="type">Documentation</span>
+                                </div>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">Java & C++</h3>
+                        <div class="resources-grid">
+                            <div class="resource-card">
+                                <div class="resource-icon"><i class="fab fa-java"></i></div>
+                                <h4>Java Programming MOOC</h4>
+                                <p>University of Helsinki's comprehensive Java course</p>
+                                <div class="resource-meta">
+                                    <span class="difficulty beginner">Beginner</span>
+                                    <span class="type">Course</span>
+                                </div>
+                                <a href="https://java-programming.mooc.fi/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                            
+                            <div class="resource-card">
+                                <div class="resource-icon"><i class="fas fa-book-open"></i></div>
+                                <h4>LearnCpp.com</h4>
+                                <p>Free, comprehensive C++ tutorial</p>
+                                <div class="resource-meta">
+                                    <span class="difficulty beginner">Beginner</span>
+                                    <span class="type">Tutorial</span>
+                                </div>
+                                <a href="https://www.learncpp.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Web Development Section -->
+                <section id="webdev" class="resource-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-globe"></i></div>
+                        <h2 class="section-title text-dark">Web Development</h2>
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-code"></i></div>
+                            <h4>The Odin Project</h4>
+                            <p>Free full-stack web development curriculum</p>
+                            <div class="resource-meta">
+                                <span class="difficulty beginner">Beginner</span>
+                                <span class="type">Full Course</span>
+                            </div>
+                            <a href="https://www.theodinproject.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fab fa-react"></i></div>
+                            <h4>React Documentation</h4>
+                            <p>Official React docs with interactive examples</p>
+                            <div class="resource-meta">
+                                <span class="difficulty intermediate">Intermediate</span>
+                                <span class="type">Documentation</span>
+                            </div>
+                            <a href="https://react.dev/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-palette"></i></div>
+                            <h4>CSS-Tricks</h4>
+                            <p>Articles, guides, and tips for modern CSS</p>
+                            <div class="resource-meta">
+                                <span class="difficulty all-levels">All Levels</span>
+                                <span class="type">Articles</span>
+                            </div>
+                            <a href="https://css-tricks.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fab fa-node"></i></div>
+                            <h4>Node.js Best Practices</h4>
+                            <p>Comprehensive guide to Node.js development</p>
+                            <div class="resource-meta">
+                                <span class="difficulty intermediate">Intermediate</span>
+                                <span class="type">Guide</span>
+                            </div>
+                            <a href="https://github.com/goldbergyoni/nodebestpractices" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Data Structures & Algorithms Section -->
+                <section id="datastructures" class="resource-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-project-diagram"></i></div>
+                        <h2 class="section-title text-dark">Data Structures & Algorithms</h2>
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-book"></i></div>
+                            <h4>Visualgo</h4>
+                            <p>Visualizing data structures and algorithms through animation</p>
+                            <div class="resource-meta">
+                                <span class="difficulty beginner">Beginner</span>
+                                <span class="type">Interactive</span>
+                            </div>
+                            <a href="https://visualgo.net/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-code-branch"></i></div>
+                            <h4>LeetCode</h4>
+                            <p>Practice coding problems and prepare for interviews</p>
+                            <div class="resource-meta">
+                                <span class="difficulty all-levels">All Levels</span>
+                                <span class="type">Practice</span>
+                            </div>
+                            <a href="https://leetcode.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-video"></i></div>
+                            <h4>MIT OpenCourseWare - Algorithms</h4>
+                            <p>Free MIT course on algorithms and data structures</p>
+                            <div class="resource-meta">
+                                <span class="difficulty advanced">Advanced</span>
+                                <span class="type">Video Course</span>
+                            </div>
+                            <a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-chart-line"></i></div>
+                            <h4>Big-O Cheat Sheet</h4>
+                            <p>Quick reference for algorithm complexities</p>
+                            <div class="resource-meta">
+                                <span class="difficulty all-levels">All Levels</span>
+                                <span class="type">Reference</span>
+                            </div>
+                            <a href="https://www.bigocheatsheet.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Databases Section -->
+                <section id="databases" class="resource-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-database"></i></div>
+                        <h2 class="section-title text-dark">Databases</h2>
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-table"></i></div>
+                            <h4>SQL Tutorial by Mode</h4>
+                            <p>Interactive SQL tutorial with real datasets</p>
+                            <div class="resource-meta">
+                                <span class="difficulty beginner">Beginner</span>
+                                <span class="type">Interactive</span>
+                            </div>
+                            <a href="https://mode.com/sql-tutorial/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-leaf"></i></div>
+                            <h4>MongoDB University</h4>
+                            <p>Free MongoDB courses and certifications</p>
+                            <div class="resource-meta">
+                                <span class="difficulty beginner">Beginner</span>
+                                <span class="type">Course</span>
+                            </div>
+                            <a href="https://learn.mongodb.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-database"></i></div>
+                            <h4>PostgreSQL Tutorial</h4>
+                            <p>Comprehensive PostgreSQL tutorial and examples</p>
+                            <div class="resource-meta">
+                                <span class="difficulty intermediate">Intermediate</span>
+                                <span class="type">Tutorial</span>
+                            </div>
+                            <a href="https://www.postgresqltutorial.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Developer Tools Section -->
+                <section id="tools" class="resource-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-tools"></i></div>
+                        <h2 class="section-title text-dark">Developer Tools</h2>
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fab fa-git-alt"></i></div>
+                            <h4>Git & GitHub Learning Lab</h4>
+                            <p>Interactive courses on Git version control</p>
+                            <div class="resource-meta">
+                                <span class="difficulty beginner">Beginner</span>
+                                <span class="type">Interactive</span>
+                            </div>
+                            <a href="https://skills.github.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-terminal"></i></div>
+                            <h4>Command Line Crash Course</h4>
+                            <p>Learn terminal/command line basics</p>
+                            <div class="resource-meta">
+                                <span class="difficulty beginner">Beginner</span>
+                                <span class="type">Tutorial</span>
+                            </div>
+                            <a href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Command_line" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fab fa-docker"></i></div>
+                            <h4>Docker Getting Started</h4>
+                            <p>Official Docker tutorial for beginners</p>
+                            <div class="resource-meta">
+                                <span class="difficulty intermediate">Intermediate</span>
+                                <span class="type">Tutorial</span>
+                            </div>
+                            <a href="https://docs.docker.com/get-started/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Career Preparation Section -->
+                <section id="career" class="resource-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-briefcase"></i></div>
+                        <h2 class="section-title text-dark">Career Preparation</h2>
+                    </div>
+                    
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                            <h4>Resume.io</h4>
+                            <p>Create professional tech resumes</p>
+                            <div class="resource-meta">
+                                <span class="difficulty all-levels">All Levels</span>
+                                <span class="type">Tool</span>
+                            </div>
+                            <a href="https://resume.io/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-comments"></i></div>
+                            <h4>Pramp - Interview Practice</h4>
+                            <p>Free peer-to-peer mock interviews</p>
+                            <div class="resource-meta">
+                                <span class="difficulty all-levels">All Levels</span>
+                                <span class="type">Practice</span>
+                            </div>
+                            <a href="https://www.pramp.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fas fa-book"></i></div>
+                            <h4>Cracking the Coding Interview</h4>
+                            <p>Essential interview preparation book</p>
+                            <div class="resource-meta">
+                                <span class="difficulty intermediate">Intermediate</span>
+                                <span class="type">Book</span>
+                            </div>
+                            <a href="http://www.crackingthecodinginterview.com/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon"><i class="fab fa-linkedin"></i></div>
+                            <h4>LinkedIn Learning</h4>
+                            <p>Professional development courses (free with library card)</p>
+                            <div class="resource-meta">
+                                <span class="difficulty all-levels">All Levels</span>
+                                <span class="type">Courses</span>
+                            </div>
+                            <a href="https://www.linkedin.com/learning/" target="_blank" class="resource-link">Visit Resource <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Additional Resources Section -->
+                <section class="resource-section">
+                    <div class="section-header">
+                        <div class="section-icon"><i class="fas fa-star"></i></div>
+                        <h2 class="section-title text-dark">Bonus Resources</h2>
+                    </div>
+                    
+                    <div class="bonus-resources">
+                        <div class="bonus-card">
+                            <h3><i class="fas fa-users"></i> Study Groups</h3>
+                            <p>Join our Discord to find study partners and collaborate on learning</p>
+                            <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" class="bonus-link">Join Discord</a>
+                        </div>
+                        
+                        <div class="bonus-card">
+                            <h3><i class="fas fa-calendar"></i> Weekly Workshops</h3>
+                            <p>Attend our hands-on coding workshops every week</p>
+                            <a href="events.html" class="bonus-link">View Schedule</a>
+                        </div>
+                        
+                        <div class="bonus-card">
+                            <h3><i class="fas fa-user-friends"></i> Mentorship Program</h3>
+                            <p>Get paired with experienced members for one-on-one guidance</p>
+                            <a href="join.html" class="bonus-link">Learn More</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <aside class="right-column">
+            <div class="inner-right-column">
+                <div class="dropdown-section active">
+                    <button class="dropdown-header">
+                        <span>Resource Types</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <h4>Documentation</h4>
+                            <p>Official guides</p>
+                        </div>
+                        <div class="dropdown-item">
+                            <h4>Interactive</h4>
+                            <p>Hands-on learning</p>
+                        </div>
+                        <div class="dropdown-item">
+                            <h4>Video Courses</h4>
+                            <p>Structured learning</p>
+                        </div>
+                        <div class="dropdown-item">
+                            <h4>Practice</h4>
+                            <p>Coding challenges</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social-section">
+                <div class="social-links-container">
+                    <a href="#" class="social-link-item"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" class="social-link-item"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="social-link-item"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-link-item"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js/resources-script.js"></script>
+</body>
+</html>

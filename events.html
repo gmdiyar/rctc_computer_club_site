@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - RCTC Computer Science Club</title>
+    <link rel="stylesheet" href="css/events-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav class="container navbar">
+            <a href="index.html" class="nav-logo">RCSC</a>
+            <div class="collapse nav-menu">
+                <ul class="navbar-nav">
+                    <a href="events.html" class="nav-events active">Events</a>
+                    <a href="projects.html" class="nav-projects">Projects</a>
+                    <a href="join.html" class="nav-join join">Join</a>
+                    <a href="members.html" class="nav-members">Members</a>
+                    <a href="about.html" class="nav-about">About</a>
+                </ul>
+            </div>
+            
+            <!-- Hamburger Menu Button -->
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Dropdown -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html" class="mobile-nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="calendar.html" class="mobile-nav-link"><i class="fas fa-calendar"></i> Calendar</a>
+            <a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a>
+            <a href="gallery.html" class="mobile-nav-link"><i class="fas fa-images"></i> Gallery</a>
+            <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-images"></i> Documentation</a>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <aside class="left-column">
+            <div class="inner-left-column">
+                <h3>Quick Access</h3>
+                <a href="calendar.html" class="calendar-button">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Full Calendar View</span>
+                </a>
+                <div class="stat-box">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Events This Month</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">This Week</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-container">
+                <h1 class="text-title text-dark">Upcoming Events</h1>
+                <p class="text-secondary">Join us for workshops, hackathons, and social gatherings</p>
+
+                <!-- Filter Section -->
+                <div class="filter-section">
+                    <div class="filter-controls">
+                        <button class="filter-btn active" data-filter="all">All Events</button>
+                        <button class="filter-btn" data-filter="workshop">Workshops</button>
+                        <button class="filter-btn" data-filter="hackathon">Hackathons</button>
+                        <button class="filter-btn" data-filter="social">Social</button>
+                        <button class="filter-btn" data-filter="meeting">Meetings</button>
+                    </div>
+                </div>
+
+                <!-- Events Grid -->
+                <div class="events-grid" id="eventsGrid">
+                    <!-- Featured Event -->
+                    <div class="event-card featured" data-category="">
+                        <div class="event-badge featured-badge">Featured</div>
+                        <div class="event-date">
+                            <div class="date-day">Spring</div>
+                            <div class="date-month">semester</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">PC Refurbishing</h3>
+                            <div class="event-meta">
+                                <span><i class="fas fa-clock"></i> TBD</span>
+                                <span><i class="fas fa-map-marker-alt"></i> RCTC Campus</span>
+                            </div>
+                            <p class="event-description">
+                                We plan on refurbishing computers and other devices given to us by the college by wiping the hard drives and resetting the data. We then plan on 
+                                reselling or giving away the PC's to students and members of the community.
+                            </p>
+                            <div class="event-tags">
+                                <span class="tag">Cyber Security</span>
+                                <span class="tag">Volunteering opportunity</span>
+                                <span class="tag">Fund raising</span>
+                            </div>
+                            <button class="event-btn">Register Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Regular Events -->
+                    <div class="event-card" data-category="workshop">
+                        <div class="event-date">
+                            <div class="date-day">08</div>
+                            <div class="date-month">JAN</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">PLACE HOLDER</h3>
+                            <div class="event-meta">
+                                <span><i class="fas fa-clock"></i> time, ex: 6:00 PM - 8:00 PM</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Room 301</span>
+                            </div>
+                            <p class="event-description">
+                                Desc
+                            </p>
+                            <div class="event-tags">
+                                <span class="tag">Workshop</span>
+                                <span class="tag">Web Dev</span>
+                            </div>
+                            <button class="event-btn">Learn More</button>
+                        </div>
+                    </div>
+
+                    <div class="event-card" data-category="workshop">
+                        <div class="event-date">
+                            <div class="date-day">08</div>
+                            <div class="date-month">JAN</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">PLACE HOLDER</h3>
+                            <div class="event-meta">
+                                <span><i class="fas fa-clock"></i> time, ex: 6:00 PM - 8:00 PM</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Room 301</span>
+                            </div>
+                            <p class="event-description">
+                                Desc
+                            </p>
+                            <div class="event-tags">
+                                <span class="tag">Workshop</span>
+                                <span class="tag">Web Dev</span>
+                            </div>
+                            <button class="event-btn">Learn More</button>
+                        </div>
+                    </div>
+                                        <div class="event-card" data-category="workshop">
+                        <div class="event-date">
+                            <div class="date-day">08</div>
+                            <div class="date-month">JAN</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">PLACE HOLDER</h3>
+                            <div class="event-meta">
+                                <span><i class="fas fa-clock"></i> time, ex: 6:00 PM - 8:00 PM</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Room 301</span>
+                            </div>
+                            <p class="event-description">
+                                Desc
+                            </p>
+                            <div class="event-tags">
+                                <span class="tag">Workshop</span>
+                                <span class="tag">Web Dev</span>
+                            </div>
+                            <button class="event-btn">Learn More</button>
+                        </div>
+                    </div>
+                                        <div class="event-card" data-category="workshop">
+                        <div class="event-date">
+                            <div class="date-day">08</div>
+                            <div class="date-month">JAN</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">PLACE HOLDER</h3>
+                            <div class="event-meta">
+                                <span><i class="fas fa-clock"></i> time, ex: 6:00 PM - 8:00 PM</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Room 301</span>
+                            </div>
+                            <p class="event-description">
+                                Desc
+                            </p>
+                            <div class="event-tags">
+                                <span class="tag">Workshop</span>
+                                <span class="tag">Web Dev</span>
+                            </div>
+                            <button class="event-btn">Learn More</button>
+                        </div>
+                    </div>
+                                        <div class="event-card" data-category="workshop">
+                        <div class="event-date">
+                            <div class="date-day">08</div>
+                            <div class="date-month">JAN</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">PLACE HOLDER</h3>
+                            <div class="event-meta">
+                                <span><i class="fas fa-clock"></i> time, ex: 6:00 PM - 8:00 PM</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Room 301</span>
+                            </div>
+                            <p class="event-description">
+                                Desc
+                            </p>
+                            <div class="event-tags">
+                                <span class="tag">Workshop</span>
+                                <span class="tag">Web Dev</span>
+                            </div>
+                            <button class="event-btn">Learn More</button>
+                        </div>
+                    </div>
+                                        <div class="event-card" data-category="workshop">
+                        <div class="event-date">
+                            <div class="date-day">08</div>
+                            <div class="date-month">JAN</div>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">PLACE HOLDER</h3>
+                            <div class="event-meta">
+                                <span><i class="fas fa-clock"></i> time, ex: 6:00 PM - 8:00 PM</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Room 301</span>
+                            </div>
+                            <p class="event-description">
+                                Desc
+                            </p>
+                            <div class="event-tags">
+                                <span class="tag">Workshop</span>
+                                <span class="tag">Web Dev</span>
+                            </div>
+                            <button class="event-btn">Learn More</button>
+                        </div>
+                    </div>
+
+                <!-- Past Events Section -->
+                <section class="past-events-section">
+                    <h2 class="section-title text-dark">Past Events Highlights</h2>
+
+                    <div class="past-events-grid">
+                        <div class="past-event-card">
+                            <div class="past-event-image">
+                               <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <h3>MITM Workshop</h3>
+                            <p class="past-event-date">November 2025</p>
+                            <p>We learned about and demonstrated MITM web attacks.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <aside class="right-column">
+            <div class="inner-right-column">
+                <!-- Quick Actions -->
+                <div class="dropdown-section active">
+                    <button class="dropdown-header">
+                        <span>Quick Actions</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <a href="calendar.html"><i class="fas fa-calendar-alt"></i> View Full Calendar</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#"><i class="fas fa-lightbulb"></i> Submit Event Idea</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#"><i class="fas fa-bell"></i> Get Event Notifications</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Categories -->
+                <div class="dropdown-section active">
+                    <button class="dropdown-header">
+                        <span>Event Types</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <h4>Workshops</h4>
+                            <p>Learn new skills and technologies</p>
+                        </div>
+                        <div class="dropdown-item">
+                            <h4>Hackathons</h4>
+                            <p>Build projects and compete</p>
+                        </div>
+                        <div class="dropdown-item">
+                            <h4>Social Events</h4>
+                            <p>Connect with other members</p>
+                        </div>
+                        <div class="dropdown-item">
+                            <h4>Meetings</h4>
+                            <p>Regular club gatherings</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Links Section -->
+            <div class="social-section">
+                <div class="social-links-container">
+                    <a href="#" class="social-link-item" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://discord.gg/4MYFx6G3Uj" target="_blank" rel="no-referrer noopener" class="social-link-item" title="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" class="social-link-item" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-link-item" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js/events-script.js"></script>
+</body>
+</html>
