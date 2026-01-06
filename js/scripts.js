@@ -419,4 +419,93 @@ if (contactForm) {
     });
 }
 
+// ========================================
+// ANNOUNCEMENTS FUNCTIONALITY
+// ========================================
+
+// Load announcements from localStorage
+function loadAnnouncements() {
+    const stored = localStorage.getItem('clubAnnouncements');
+    if (stored) {
+        return JSON.parse(stored).map(announcement => ({
+            ...announcement,
+            date: new Date(announcement.date)
+        }));
+    }
+    return [];
+}
+
+// Display announcements on the page
+function displayAnnouncements() {
+    const announcements = loadAnnouncements();
+    const container = document.getElementById('announcementsContainer');
+    const countElement = document.getElementById('announcementCount');
+    
+    if (!container) return; // Not on index page
+    
+    // Update count
+    countElement.textContent = announcements.length;
+    
+    if (announcements.length === 0) {
+        container.innerHTML = '<p class="no-announcements">No announcements at this time. Check back later!</p>';
+        return;
+    }
+    
+    // Sort by date (newest first)
+    announcements.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    // Display only the 5 most recent
+    const recentAnnouncements = announcements.slice(0, 5);
+    
+    container.innerHTML = recentAnnouncements.map(announcement => `
+        <div class="announcement-card ${announcement.type}">
+            <div class="announcement-header">
+                <h3 class="announcement-title">${announcement.title}</h3>
+                <span class="announcement-badge ${announcement.type}">${announcement.type}</span>
+            </div>
+            <p class="announcement-content">${announcement.content}</p>
+            <div class="announcement-footer">
+                <div class="announcement-meta">
+                    <span><i class="fas fa-calendar"></i> ${formatAnnouncementDate(announcement.date)}</span>
+                    <span><i class="fas fa-user"></i> ${announcement.author || 'Admin'}</span>
+                </div>
+                ${announcement.link ? `<a href="${announcement.link}" class="announcement-link">Read More <i class="fas fa-arrow-right"></i></a>` : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+// Format date for announcements
+function formatAnnouncementDate(date) {
+    const now = new Date();
+    const announcementDate = new Date(date);
+    const diffTime = Math.abs(now - announcementDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 0) {
+        return 'Today';
+    } else if (diffDays === 1) {
+        return 'Yesterday';
+    } else if (diffDays < 7) {
+        return `${diffDays} days ago`;
+    } else {
+        return announcementDate.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric', 
+            year: 'numeric' 
+        });
+    }
+}
+
+// Initialize announcements on page load
+document.addEventListener('DOMContentLoaded', () => {
+    displayAnnouncements();
+});
+
+// Export for admin panel
+window.announcementsAPI = {
+    loadAnnouncements,
+    displayAnnouncements
+};
+
 console.log('RCTC CS Club - Website loaded successfully');

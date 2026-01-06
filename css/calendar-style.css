@@ -286,32 +286,59 @@ button:active {
 .category-filters {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .category-filter {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px;
-  border-radius: 6px;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
+  background: white;
+  border: 2px solid #f0f0f0;
 }
 
 .category-filter:hover {
-  background: #f5f5f5;
+  background: #f9f9f9;
+  border-color: var(--two);
+  transform: translateX(3px);
 }
 
 .category-filter input[type="checkbox"] {
   cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--two);
+}
+
+.category-filter input[type="checkbox"]:checked {
+  transform: scale(1.1);
+}
+
+.category-filter:has(input:checked) {
+  background: rgba(79, 91, 201, 0.05);
+  border-color: var(--two);
+}
+
+.category-filter:has(input:checked) .color-dot {
+  box-shadow: 0 0 0 3px rgba(79, 91, 201, 0.2);
+}
+
+.category-filter span:last-child {
+  font-weight: 600;
+  color: var(--one);
+  flex: 1;
 }
 
 .color-dot {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .color-dot.workshop { background: var(--workshop); }
@@ -352,6 +379,18 @@ button:active {
   font-size: 0.85rem;
   color: var(--one);
   font-weight: 600;
+}
+
+/* Right Column */
+.calendar-right-column {
+  width: 280px;
+  background: white;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 /* Main Calendar Area */
@@ -515,11 +554,15 @@ button:active {
 
 .calendar-cell {
   min-height: 120px;
+  max-height: 120px;
   background: white;
   padding: 8px;
   position: relative;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .calendar-cell:hover {
@@ -555,6 +598,22 @@ button:active {
   display: flex;
   flex-direction: column;
   gap: 3px;
+  overflow-y: auto; /* Make scrollable */
+  flex: 1; /* Take remaining space */
+  padding-right: 4px; /* Space for scrollbar */
+}
+
+.cell-events::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cell-events::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cell-events::-webkit-scrollbar-thumb {
+  background: var(--three);
+  border-radius: 2px;
 }
 
 .event-item {
@@ -924,7 +983,8 @@ button:active {
     flex-direction: column;
   }
 
-  .calendar-sidebar {
+  .calendar-sidebar,
+  .calendar-right-column {
     width: 100%;
     max-height: 300px;
     flex-direction: row;

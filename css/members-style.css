@@ -760,3 +760,137 @@ button:active {
     text-align: center;
   }
 }
+
+/* Additional styles for Members page left column */
+
+/* Statistics Boxes */
+.stat-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(79, 91, 201, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border-left: 4px solid var(--two);
+  transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+  background: rgba(79, 91, 201, 0.1);
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(79, 91, 201, 0.2);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--two), var(--three));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--one);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--two);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Activity Feed */
+.activity-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.activity-item:hover {
+  background: rgba(79, 91, 201, 0.08);
+  transform: translateX(3px);
+}
+
+.activity-icon {
+  width: 35px;
+  height: 35px;
+  background: white;
+  border: 2px solid var(--five);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--two);
+  font-size: 0.9rem;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-text {
+  font-size: 0.85rem;
+  color: var(--one);
+  margin: 0 0 3px 0;
+  line-height: 1.3;
+}
+
+.activity-time {
+  font-size: 0.7rem;
+  color: #999;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stat-box {
+    padding: 12px;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .activity-item {
+    padding: 8px;
+  }
+
+  .activity-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+}
