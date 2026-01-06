@@ -39,6 +39,7 @@
             <a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a>
             <a href="gallery.html" class="mobile-nav-link"><i class="fas fa-images"></i> Gallery</a>
             <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-images"></i> Documentation</a>
+            <a href="#" class="mobile-nav-link contact-trigger"><i class="fas fa-envelope"></i> Contact Us</a>
         </div>
     </header>
 
@@ -50,14 +51,6 @@
                     <i class="fas fa-calendar-alt"></i>
                     <span>Full Calendar View</span>
                 </a>
-                <div class="stat-box">
-                    <span class="stat-number">12</span>
-                    <span class="stat-label">Events This Month</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-number">3</span>
-                    <span class="stat-label">This Week</span>
-                </div>
             </div>
         </aside>
 
@@ -101,12 +94,12 @@
                                 <span class="tag">Volunteering opportunity</span>
                                 <span class="tag">Fund raising</span>
                             </div>
-                            <button class="event-btn">Register Now</button>
+                            <button class="event-btn">Learn more</button>
                         </div>
                     </div>
 
                     <!-- Regular Events -->
-                    <div class="event-card" data-category="workshop">
+                    <!-- <div class="event-card" data-category="workshop">
                         <div class="event-date">
                             <div class="date-day">08</div>
                             <div class="date-month">JAN</div>
@@ -126,9 +119,9 @@
                             </div>
                             <button class="event-btn">Learn More</button>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="event-card" data-category="workshop">
+                    <!-- <div class="event-card" data-category="workshop">
                         <div class="event-date">
                             <div class="date-day">08</div>
                             <div class="date-month">JAN</div>
@@ -148,8 +141,9 @@
                             </div>
                             <button class="event-btn">Learn More</button>
                         </div>
-                    </div>
-                                        <div class="event-card" data-category="workshop">
+                    </div> -->
+
+                    <!-- <div class="event-card" data-category="workshop">
                         <div class="event-date">
                             <div class="date-day">08</div>
                             <div class="date-month">JAN</div>
@@ -169,8 +163,9 @@
                             </div>
                             <button class="event-btn">Learn More</button>
                         </div>
-                    </div>
-                                        <div class="event-card" data-category="workshop">
+                    </div> -->
+                    
+                    <!-- <div class="event-card" data-category="workshop">
                         <div class="event-date">
                             <div class="date-day">08</div>
                             <div class="date-month">JAN</div>
@@ -190,8 +185,9 @@
                             </div>
                             <button class="event-btn">Learn More</button>
                         </div>
-                    </div>
-                                        <div class="event-card" data-category="workshop">
+                    </div> -->
+
+                    <!-- <div class="event-card" data-category="workshop">
                         <div class="event-date">
                             <div class="date-day">08</div>
                             <div class="date-month">JAN</div>
@@ -211,8 +207,9 @@
                             </div>
                             <button class="event-btn">Learn More</button>
                         </div>
-                    </div>
-                                        <div class="event-card" data-category="workshop">
+                    </div> -->
+
+                    <!-- <div class="event-card" data-category="workshop">
                         <div class="event-date">
                             <div class="date-day">08</div>
                             <div class="date-month">JAN</div>
@@ -232,7 +229,7 @@
                             </div>
                             <button class="event-btn">Learn More</button>
                         </div>
-                    </div>
+                    </div> -->
 
                 <!-- Past Events Section -->
                 <section class="past-events-section">
@@ -261,9 +258,6 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-content">
-                        <div class="dropdown-item">
-                            <a href="calendar.html"><i class="fas fa-calendar-alt"></i> View Full Calendar</a>
-                        </div>
                         <div class="dropdown-item">
                             <a href="#"><i class="fas fa-lightbulb"></i> Submit Event Idea</a>
                         </div>
@@ -311,7 +305,78 @@
             </div>
         </aside>
     </div>
-
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h2>Contact Us</h2>
+                <p>We'd love to hear from you! Send us a message.</p>
+            </div>
+            
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="contactName">Your Name</label>
+                    <input 
+                        type="text" 
+                        id="contactName" 
+                        name="name" 
+                        required 
+                        placeholder="Enter your name"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactEmail">Your Email</label>
+                    <input 
+                        type="email" 
+                        id="contactEmail" 
+                        name="email" 
+                        required 
+                        placeholder="your.email@example.com"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactTopic">Topic</label>
+                    <select id="contactTopic" name="topic" required>
+                        <option value="">Select a topic...</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="membership">Membership Question</option>
+                        <option value="events">Event Information</option>
+                        <option value="projects">Project Collaboration</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea 
+                        id="contactMessage" 
+                        name="message" 
+                        rows="6" 
+                        required 
+                        placeholder="Type your message here..."
+                    ></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </div>
+            </form>
+            
+            <div id="formStatus" class="form-status"></div>
+        </div>
+    </div>
     <script src="js/events-script.js"></script>
 </body>
 </html>
