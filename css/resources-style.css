@@ -1103,6 +1103,13 @@ body.modal-open {
     padding-left: 20px;
 }
 
+.resource-nav .nav-item.active {
+    background: rgba(79, 91, 201, 0.1);
+    border-left-color: var(--two);
+    font-weight: 700;
+    color: var(--one);
+}
+
 .resource-section {
     background: white;
     padding: 40px;

@@ -1,132 +1,32 @@
-// Calendar State
+// ========================================
+// CALENDAR STATE
+// ========================================
 let currentDate = new Date();
 let currentView = 'month';
-let selectedDate = null;
-let events = [];
+let events = JSON.parse(localStorage.getItem('calendarEvents')) || []; // Load from localStorage
 let filteredCategories = new Set(['workshop', 'hackathon', 'social', 'meeting', 'deadline']);
 
-// Sample Events Data (read-only)
-const sampleEvents = [
-    {
-        id: 1,
-        title: "React Workshop",
-        start: new Date(2026, 0, 8, 18, 0),
-        end: new Date(2026, 0, 8, 20, 0),
-        category: "workshop",
-        location: "Room 301",
-        description: "Learn React fundamentals and build your first interactive web application"
-    },
-    {
-        id: 2,
-        title: "Weekly Club Meeting",
-        start: new Date(2026, 0, 10, 17, 0),
-        end: new Date(2026, 0, 10, 18, 30),
-        category: "meeting",
-        location: "Student Center",
-        description: "Our regular weekly meeting to discuss projects, share updates, and plan future events"
-    },
-    {
-        id: 3,
-        title: "Game Night",
-        start: new Date(2026, 0, 12, 19, 0),
-        end: new Date(2026, 0, 12, 22, 0),
-        category: "social",
-        location: "Game Room",
-        description: "Relax and have fun! Board games, video games, and pizza"
-    },
-    {
-        id: 4,
-        title: "Winter Hackathon 2026",
-        start: new Date(2026, 1, 15, 9, 0),
-        end: new Date(2026, 1, 15, 21, 0),
-        category: "hackathon",
-        location: "RCTC Innovation Lab",
-        description: "Join us for our biggest hackathon of the year! Build innovative projects and compete for prizes"
-    },
-    {
-        id: 5,
-        title: "Git & GitHub Basics",
-        start: new Date(2026, 0, 17, 18, 0),
-        end: new Date(2026, 0, 17, 19, 30),
-        category: "workshop",
-        location: "Computer Lab A",
-        description: "Master version control with Git and learn how to collaborate on GitHub effectively"
-    },
-    {
-        id: 6,
-        title: "Project Proposal Deadline",
-        start: new Date(2026, 0, 20, 23, 59),
-        end: new Date(2026, 0, 20, 23, 59),
-        category: "deadline",
-        location: "Submit Online",
-        description: "Submit your project proposals for review"
-    },
-    {
-        id: 7,
-        title: "Python for Data Science",
-        start: new Date(2026, 0, 22, 18, 30),
-        end: new Date(2026, 0, 22, 20, 30),
-        category: "workshop",
-        location: "Data Lab",
-        description: "Introduction to data analysis and visualization using Python, pandas, and matplotlib"
-    },
-    {
-        id: 8,
-        title: "Tech Talk: Career Paths",
-        start: new Date(2026, 0, 25, 16, 0),
-        end: new Date(2026, 0, 25, 17, 30),
-        category: "social",
-        location: "Auditorium",
-        description: "Guest speakers from local tech companies share their career journeys and offer advice"
-    },
-    {
-        id: 9,
-        title: "Weekly Club Meeting",
-        start: new Date(2026, 0, 17, 17, 0),
-        end: new Date(2026, 0, 17, 18, 30),
-        category: "meeting",
-        location: "Student Center",
-        description: "Our regular weekly meeting"
-    },
-    {
-        id: 10,
-        title: "Weekly Club Meeting",
-        start: new Date(2026, 0, 24, 17, 0),
-        end: new Date(2026, 0, 24, 18, 30),
-        category: "meeting",
-        location: "Student Center",
-        description: "Our regular weekly meeting"
-    },
-    {
-        id: 11,
-        title: "Weekly Club Meeting",
-        start: new Date(2026, 0, 31, 17, 0),
-        end: new Date(2026, 0, 31, 18, 30),
-        category: "meeting",
-        location: "Student Center",
-        description: "Our regular weekly meeting"
-    }
-];
-
-events = [...sampleEvents];
-
-// Initialize
+// ========================================
+// INITIALIZATION
+// ========================================
 document.addEventListener('DOMContentLoaded', () => {
     initializeEventHandlers();
     renderCalendar();
     updateUpcomingEvents();
 });
 
-// Mobile menu
+// ========================================
+// MOBILE MENU
+// ========================================
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
+
 hamburger.addEventListener('click', (e) => {
     e.stopPropagation();
     hamburger.classList.toggle('active');
     mobileMenu.classList.toggle('active');
 });
 
-// Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
         hamburger.classList.remove('active');
@@ -134,9 +34,11 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Initialize Event Handlers
+// ========================================
+// EVENT HANDLERS INITIALIZATION
+// ========================================
 function initializeEventHandlers() {
-    // View switcher
+    // View switcher buttons
     document.querySelectorAll('.view-mode-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             currentView = btn.dataset.view;
@@ -146,7 +48,7 @@ function initializeEventHandlers() {
         });
     });
 
-    // Navigation buttons
+    // Navigation buttons (prev/next)
     document.getElementById('prevPeriod').addEventListener('click', navigatePrevious);
     document.getElementById('nextPeriod').addEventListener('click', navigateNext);
     
@@ -157,7 +59,7 @@ function initializeEventHandlers() {
         showToast('Jumped to today!');
     });
 
-    // Category filters
+    // Category filter checkboxes
     document.querySelectorAll('.category-filter input').forEach(checkbox => {
         checkbox.addEventListener('change', (e) => {
             const category = e.target.dataset.category;
@@ -171,7 +73,7 @@ function initializeEventHandlers() {
         });
     });
 
-    // Search
+    // Search functionality
     let searchTimeout;
     document.getElementById('eventSearch').addEventListener('input', (e) => {
         clearTimeout(searchTimeout);
@@ -180,12 +82,10 @@ function initializeEventHandlers() {
         }, 300);
     });
 
-    // Modal handlers
+    // Modal close handlers
     document.getElementById('closeEventModal').addEventListener('click', closeEventModal);
-    
-    // Click outside modal to close
     document.getElementById('eventModal').addEventListener('click', (e) => {
-        if (e.target.id === 'eventModal') {
+        if (e.target.id === 'eventModal' || e.target.classList.contains('modal-overlay')) {
             closeEventModal();
         }
     });
@@ -196,22 +96,23 @@ function initializeEventHandlers() {
 
     // RSVP button
     document.getElementById('rsvpEventBtn').addEventListener('click', handleRSVP);
-    
-    // Add to calendar button
-    document.getElementById('addToCalendarBtn').addEventListener('click', handleAddToCalendar);
 
     // Keyboard shortcuts
     document.addEventListener('keydown', handleKeyboardShortcuts);
 }
 
-// Switch View
+// ========================================
+// VIEW SWITCHING
+// ========================================
 function switchView(view) {
     document.querySelectorAll('.calendar-view').forEach(v => v.classList.remove('active'));
     document.getElementById(`${view}View`).classList.add('active');
     renderCalendar();
 }
 
-// Navigate Previous/Next
+// ========================================
+// NAVIGATION
+// ========================================
 function navigatePrevious() {
     switch(currentView) {
         case 'month':
@@ -242,7 +143,9 @@ function navigateNext() {
     renderCalendar();
 }
 
-// Render Calendar
+// ========================================
+// CALENDAR RENDERING
+// ========================================
 function renderCalendar() {
     updatePeriodLabel();
     
@@ -259,7 +162,6 @@ function renderCalendar() {
     }
 }
 
-// Update Period Label
 function updatePeriodLabel() {
     const label = document.getElementById('currentPeriod');
     const options = { year: 'numeric', month: 'long' };
@@ -280,7 +182,9 @@ function updatePeriodLabel() {
     }
 }
 
-// Render Month View
+// ========================================
+// MONTH VIEW
+// ========================================
 function renderMonthView() {
     const grid = document.getElementById('monthGrid');
     grid.innerHTML = '';
@@ -307,7 +211,7 @@ function renderMonthView() {
         cells.push(createMonthCell(new Date(year, month, day), false));
     }
     
-    // Next month days
+    // Next month days to fill grid
     const remainingCells = 42 - cells.length;
     for (let day = 1; day <= remainingCells; day++) {
         cells.push(createMonthCell(new Date(year, month + 1, day), true));
@@ -316,7 +220,6 @@ function renderMonthView() {
     cells.forEach(cell => grid.appendChild(cell));
 }
 
-// Create Month Cell
 function createMonthCell(date, otherMonth) {
     const cell = document.createElement('div');
     cell.className = 'calendar-cell';
@@ -358,6 +261,7 @@ function createMonthCell(date, otherMonth) {
     
     cell.appendChild(eventsDiv);
     
+    // Click on cell to view day
     cell.addEventListener('click', () => {
         currentDate = new Date(date);
         currentView = 'day';
@@ -369,7 +273,9 @@ function createMonthCell(date, otherMonth) {
     return cell;
 }
 
-// Render Week View
+// ========================================
+// WEEK VIEW
+// ========================================
 function renderWeekView() {
     const weekStart = getWeekStart(currentDate);
     const header = document.getElementById('weekHeader');
@@ -378,7 +284,7 @@ function renderWeekView() {
     header.innerHTML = '<div class="week-header-cell time-label">Time</div>';
     grid.innerHTML = '';
     
-    // Header
+    // Create header with days
     for (let i = 0; i < 7; i++) {
         const date = new Date(weekStart);
         date.setDate(date.getDate() + i);
@@ -388,13 +294,14 @@ function renderWeekView() {
         header.appendChild(headerCell);
     }
     
-    // Time slots
+    // Create time slots for each hour
     for (let hour = 0; hour < 24; hour++) {
         const timeSlot = document.createElement('div');
         timeSlot.className = 'time-slot';
         timeSlot.textContent = formatHour(hour);
         grid.appendChild(timeSlot);
         
+        // Create cells for each day of the week
         for (let day = 0; day < 7; day++) {
             const date = new Date(weekStart);
             date.setDate(date.getDate() + day);
@@ -417,7 +324,9 @@ function renderWeekView() {
     }
 }
 
-// Render Day View
+// ========================================
+// DAY VIEW
+// ========================================
 function renderDayView() {
     const header = document.getElementById('dayHeader');
     const timeline = document.getElementById('dayTimeline');
@@ -428,6 +337,7 @@ function renderDayView() {
     
     timeline.innerHTML = '';
     
+    // Create timeline for each hour
     for (let hour = 0; hour < 24; hour++) {
         const hourDiv = document.createElement('div');
         hourDiv.className = 'timeline-hour';
@@ -461,7 +371,9 @@ function renderDayView() {
     }
 }
 
-// Helper Functions
+// ========================================
+// HELPER FUNCTIONS
+// ========================================
 function getWeekStart(date) {
     const d = new Date(date);
     const day = d.getDay();
@@ -507,7 +419,9 @@ function formatTime(date) {
     return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
 }
 
-// Event Detail Modal
+// ========================================
+// EVENT DETAIL MODAL
+// ========================================
 function showEventDetail(event) {
     const modal = document.getElementById('eventModal');
     const header = document.getElementById('eventDetailHeader');
@@ -565,7 +479,9 @@ function closeEventModal() {
     document.getElementById('eventModal').classList.remove('active');
 }
 
-// Update Upcoming Events List
+// ========================================
+// UPCOMING EVENTS LIST
+// ========================================
 function updateUpcomingEvents() {
     const container = document.getElementById('upcomingEventsList');
     const now = new Date();
@@ -575,19 +491,28 @@ function updateUpcomingEvents() {
         .slice(0, 5);
     
     if (upcoming.length === 0) {
-        container.innerHTML = '<p style="color: #666; font-size: 0.85rem; text-align: center;">No upcoming events</p>';
+        container.innerHTML = '<p style="color: #666; font-size: 0.85rem; text-align: center; padding: 20px;">No upcoming events</p>';
         return;
     }
     
     container.innerHTML = upcoming.map(event => `
-        <div class="upcoming-event-item" onclick="showEventDetail(events.find(e => e.id === ${event.id}))">
+        <div class="upcoming-event-item" onclick="showEventDetailById(${event.id})">
             <div class="event-date-small">${event.start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</div>
             <div class="event-title-small">${event.title}</div>
         </div>
     `).join('');
 }
 
-// Search Events
+function showEventDetailById(eventId) {
+    const event = events.find(e => e.id === eventId);
+    if (event) {
+        showEventDetail(event);
+    }
+}
+
+// ========================================
+// SEARCH FUNCTIONALITY
+// ========================================
 function searchEvents(query) {
     if (!query) {
         renderCalendar();
@@ -608,7 +533,6 @@ function searchEvents(query) {
     }
 }
 
-// Show Day Events
 function showDayEvents(date) {
     currentDate = new Date(date);
     currentView = 'day';
@@ -617,7 +541,9 @@ function showDayEvents(date) {
     switchView('day');
 }
 
-// Share Calendar
+// ========================================
+// SHARE CALENDAR
+// ========================================
 function shareCalendar() {
     const url = window.location.href;
     
@@ -627,118 +553,128 @@ function shareCalendar() {
             text: 'Check out our upcoming events!',
             url: url
         }).then(() => {
-            showToast('Calendar link shared!');
+            showToast('Calendar shared successfully!');
         }).catch(() => {
+            // Fallback to clipboard
             copyToClipboard(url);
         });
     } else {
+        // Use clipboard fallback
         copyToClipboard(url);
     }
 }
 
 function copyToClipboard(text) {
-    if (navigator.clipboard) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
             showToast('Calendar link copied to clipboard!');
+        }).catch(() => {
+            fallbackCopyToClipboard(text);
         });
     } else {
-        // Fallback
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        showToast('Calendar link copied to clipboard!');
+        fallbackCopyToClipboard(text);
     }
 }
 
-// Export Calendar as Image
+function fallbackCopyToClipboard(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    
+    try {
+        document.execCommand('copy');
+        showToast('Calendar link copied to clipboard!');
+    } catch (err) {
+        showToast('Unable to copy link. Please copy manually.');
+    }
+    
+    document.body.removeChild(textarea);
+}
+
+// ========================================
+// EXPORT CALENDAR
+// ========================================
 async function exportCalendar() {
     showToast('Preparing calendar download...');
     
-    // Get all visible events for current view
-    const visibleEvents = events.filter(e => filteredCategories.has(e.category));
-    
-    // Create a canvas to draw the calendar
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    
-    // Set canvas size
-    canvas.width = 1200;
-    canvas.height = 800;
-    
-    // Background
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Title
-    ctx.fillStyle = '#1b1261';
-    ctx.font = 'bold 36px "Space Mono", monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('RCTC CS Club Events Calendar', canvas.width / 2, 60);
-    
-    // Period
-    ctx.font = '24px "Space Mono", monospace';
-    ctx.fillStyle = '#4f5bc9';
-    let periodText = '';
-    switch(currentView) {
-        case 'month':
-            periodText = currentDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
-            break;
-        case 'week':
+    try {
+        // Get visible events for current view
+        const visibleEvents = events.filter(e => filteredCategories.has(e.category));
+        
+        // Create canvas
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        canvas.width = 1200;
+        canvas.height = 800;
+        
+        // Background
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Title
+        ctx.fillStyle = '#1b1261';
+        ctx.font = 'bold 36px "Space Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('RCTC CS Club Events Calendar', canvas.width / 2, 60);
+        
+        // Period text
+        ctx.font = '24px "Space Mono", monospace';
+        ctx.fillStyle = '#4f5bc9';
+        let periodText = '';
+        
+        switch(currentView) {
+            case 'month':
+                periodText = currentDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+                break;
+            case 'week':
+                const weekStart = getWeekStart(currentDate);
+                const weekEnd = new Date(weekStart);
+                weekEnd.setDate(weekEnd.getDate() + 6);
+                periodText = `${weekStart.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${weekEnd.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+                break;
+            case 'day':
+                periodText = currentDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                break;
+        }
+        ctx.fillText(periodText, canvas.width / 2, 100);
+        
+        // Get events to display
+        let eventsToShow = [];
+        if (currentView === 'month') {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            eventsToShow = visibleEvents.filter(e => e.start >= firstDay && e.start <= lastDay);
+        } else if (currentView === 'week') {
             const weekStart = getWeekStart(currentDate);
             const weekEnd = new Date(weekStart);
-            weekEnd.setDate(weekEnd.getDate() + 6);
-            periodText = `${weekStart.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${weekEnd.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
-            break;
-        case 'day':
-            periodText = currentDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            break;
-    }
-    ctx.fillText(periodText, canvas.width / 2, 100);
-    
-    // Get events to display based on current view
-    let eventsToShow = [];
-    if (currentView === 'month') {
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
-        const firstDay = new Date(year, month, 1);
-        const lastDay = new Date(year, month + 1, 0);
-        eventsToShow = visibleEvents.filter(e => 
-            e.start >= firstDay && e.start <= lastDay
-        );
-    } else if (currentView === 'week') {
-        const weekStart = getWeekStart(currentDate);
-        const weekEnd = new Date(weekStart);
-        weekEnd.setDate(weekEnd.getDate() + 7);
-        eventsToShow = visibleEvents.filter(e => 
-            e.start >= weekStart && e.start < weekEnd
-        );
-    } else {
-        eventsToShow = getEventsForDate(currentDate);
-    }
-    
-    // Sort events by date
-    eventsToShow.sort((a, b) => a.start - b.start);
-    
-    // Draw events list
-    ctx.textAlign = 'left';
-    ctx.font = '16px "Space Mono", monospace';
-    let y = 160;
-    const lineHeight = 35;
-    const maxEvents = Math.floor((canvas.height - 200) / lineHeight);
-    
-    if (eventsToShow.length === 0) {
-        ctx.fillStyle = '#666';
-        ctx.font = 'italic 18px "Space Mono", monospace';
-        ctx.textAlign = 'center';
-        ctx.fillText('No events scheduled for this period', canvas.width / 2, y + 100);
-    } else {
-        eventsToShow.slice(0, maxEvents).forEach((event, index) => {
-            // Category dot
+            weekEnd.setDate(weekEnd.getDate() + 7);
+            eventsToShow = visibleEvents.filter(e => e.start >= weekStart && e.start < weekEnd);
+        } else {
+            eventsToShow = getEventsForDate(currentDate);
+        }
+        
+        eventsToShow.sort((a, b) => a.start - b.start);
+        
+        // Draw events
+        ctx.textAlign = 'left';
+        ctx.font = '16px "Space Mono", monospace';
+        let y = 160;
+        const lineHeight = 35;
+        const maxEvents = Math.floor((canvas.height - 200) / lineHeight);
+        
+        if (eventsToShow.length === 0) {
+            ctx.fillStyle = '#666';
+            ctx.font = 'italic 18px "Space Mono", monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText('No events scheduled for this period', canvas.width / 2, y + 100);
+        } else {
             const colors = {
                 workshop: '#2196F3',
                 hackathon: '#FF5722',
@@ -746,104 +682,123 @@ async function exportCalendar() {
                 meeting: '#9C27B0',
                 deadline: '#FF9800'
             };
-            ctx.fillStyle = colors[event.category] || '#666';
-            ctx.beginPath();
-            ctx.arc(50, y + 8, 8, 0, 2 * Math.PI);
-            ctx.fill();
             
-            // Event date
-            ctx.fillStyle = '#666';
-            ctx.font = '14px "Space Mono", monospace';
-            const dateStr = event.start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            ctx.fillText(dateStr, 80, y + 5);
+            eventsToShow.slice(0, maxEvents).forEach((event) => {
+                // Category dot
+                ctx.fillStyle = colors[event.category] || '#666';
+                ctx.beginPath();
+                ctx.arc(50, y + 8, 8, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // Event date
+                ctx.fillStyle = '#666';
+                ctx.font = '14px "Space Mono", monospace';
+                const dateStr = event.start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                ctx.fillText(dateStr, 80, y + 5);
+                
+                // Event title
+                ctx.fillStyle = '#1b1261';
+                ctx.font = 'bold 16px "Space Mono", monospace';
+                ctx.fillText(event.title, 80, y + 25);
+                
+                // Event time and location
+                ctx.fillStyle = '#666';
+                ctx.font = '14px "Space Mono", monospace';
+                const timeStr = `${formatTime(event.start)} - ${formatTime(event.end)}`;
+                const locationStr = event.location ? ` • ${event.location}` : '';
+                ctx.fillText(timeStr + locationStr, 200, y + 5);
+                
+                y += lineHeight;
+            });
             
-            // Event title
-            ctx.fillStyle = '#1b1261';
-            ctx.font = 'bold 16px "Space Mono", monospace';
-            ctx.fillText(event.title, 80, y + 25);
-            
-            // Event time and location
-            ctx.fillStyle = '#666';
-            ctx.font = '14px "Space Mono", monospace';
-            const timeStr = `${formatTime(event.start)} - ${formatTime(event.end)}`;
-            const locationStr = event.location ? ` • ${event.location}` : '';
-            ctx.fillText(timeStr + locationStr, 200, y + 5);
-            
-            y += lineHeight;
-        });
-        
-        if (eventsToShow.length > maxEvents) {
-            ctx.fillStyle = '#4f5bc9';
-            ctx.font = 'italic 16px "Space Mono", monospace';
-            ctx.fillText(`... and ${eventsToShow.length - maxEvents} more events`, 80, y);
+            if (eventsToShow.length > maxEvents) {
+                ctx.fillStyle = '#4f5bc9';
+                ctx.font = 'italic 16px "Space Mono", monospace';
+                ctx.fillText(`... and ${eventsToShow.length - maxEvents} more events`, 80, y);
+            }
         }
+        
+        // Footer
+        ctx.fillStyle = '#999';
+        ctx.font = '14px "Space Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('RCTC Computer Science Club', canvas.width / 2, canvas.height - 30);
+        
+        // Download
+        canvas.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `rctc-cs-calendar-${currentView}-${Date.now()}.png`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('Calendar downloaded successfully!');
+        }, 'image/png');
+        
+    } catch (error) {
+        console.error('Export error:', error);
+        showToast('Failed to export calendar. Please try again.');
     }
-    
-    // Footer
-    ctx.fillStyle = '#999';
-    ctx.font = '14px "Space Mono", monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('RCTC Computer Science Club • calendar.rctccs.club', canvas.width / 2, canvas.height - 30);
-    
-    // Convert canvas to blob and download
-    canvas.toBlob((blob) => {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `rctc-cs-calendar-${currentView}-${Date.now()}.png`;
-        a.click();
-        URL.revokeObjectURL(url);
-        showToast('Calendar image downloaded!');
-    }, 'image/png');
 }
 
-// RSVP Handler
+// ========================================
+// RSVP HANDLER
+// ========================================
 function handleRSVP() {
-    showToast('RSVP submitted! You\'ll receive a confirmation email soon.');
+    // In production, this would send data to a backend
+    showToast('RSVP submitted! Check your email for confirmation.');
     closeEventModal();
 }
 
-// Add to Calendar Handler
-function handleAddToCalendar() {
-    showToast('Event added to your personal calendar!');
-    closeEventModal();
-}
-
-// Toast Notification
+// ========================================
+// TOAST NOTIFICATIONS
+// ========================================
 function showToast(message) {
     const toast = document.getElementById('toast');
     const messageEl = document.getElementById('toastMessage');
     messageEl.textContent = message;
     toast.classList.add('show');
+    
     setTimeout(() => {
         toast.classList.remove('show');
     }, 3000);
 }
 
-// Keyboard Shortcuts
+// ========================================
+// KEYBOARD SHORTCUTS
+// ========================================
 function handleKeyboardShortcuts(e) {
+    // Don't trigger shortcuts when typing in input fields
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     
     switch(e.key) {
         case 'ArrowLeft':
+            e.preventDefault();
             navigatePrevious();
             break;
         case 'ArrowRight':
+            e.preventDefault();
             navigateNext();
             break;
         case 't':
         case 'T':
+            e.preventDefault();
             currentDate = new Date();
             renderCalendar();
             showToast('Jumped to today!');
             break;
         case '1':
+            e.preventDefault();
             switchToView('month');
             break;
         case '2':
+            e.preventDefault();
             switchToView('week');
             break;
         case '3':
+            e.preventDefault();
             switchToView('day');
             break;
         case 'Escape':
@@ -857,4 +812,68 @@ function switchToView(view) {
     document.querySelectorAll('.view-mode-btn').forEach(b => b.classList.remove('active'));
     document.querySelector(`[data-view="${view}"]`).classList.add('active');
     switchView(view);
+    showToast(`Switched to ${view} view`);
 }
+
+// ========================================
+// EVENT MANAGEMENT (For Admin Use)
+// ========================================
+// Function to add events - called from admin panel
+function addEvent(eventData) {
+    /*
+    Example eventData format:
+    {
+        id: 1,
+        title: "Event Name",
+        start: new Date(2026, 0, 15, 18, 0),
+        end: new Date(2026, 0, 15, 20, 0),
+        category: "workshop", // workshop, hackathon, social, meeting, deadline
+        location: "Room 301",
+        description: "Event description"
+    }
+    */
+    events.push(eventData);
+    saveEventsToLocalStorage();
+    renderCalendar();
+    updateUpcomingEvents();
+    showToast('Event added successfully!');
+}
+
+// Function to delete event
+function deleteEvent(eventId) {
+    events = events.filter(e => e.id !== eventId);
+    saveEventsToLocalStorage();
+    renderCalendar();
+    updateUpcomingEvents();
+    showToast('Event deleted successfully!');
+}
+
+// Save events to localStorage
+function saveEventsToLocalStorage() {
+    localStorage.setItem('calendarEvents', JSON.stringify(events));
+}
+
+// Load events and convert date strings back to Date objects
+function loadEventsFromLocalStorage() {
+    const stored = localStorage.getItem('calendarEvents');
+    if (stored) {
+        events = JSON.parse(stored).map(event => ({
+            ...event,
+            start: new Date(event.start),
+            end: new Date(event.end)
+        }));
+    }
+}
+
+// Call on page load
+loadEventsFromLocalStorage();
+
+// Export for potential admin panel integration
+window.calendarAPI = {
+    addEvent,
+    deleteEvent,
+    events,
+    renderCalendar,
+    updateUpcomingEvents,
+    saveEventsToLocalStorage
+};

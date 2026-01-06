@@ -1,5 +1,6 @@
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
+
 hamburger.addEventListener('click', (e) => {
     e.stopPropagation();
     hamburger.classList.toggle('active');
@@ -38,23 +39,23 @@ document.querySelectorAll('.resource-nav .nav-item').forEach(link => {
 // Highlight active section in navigation
 const observerOptions = {
     threshold: 0.3,
-    rootMargin: '-100px 0px -50% 0px'
+    rootMargin: '-80px 0px -50% 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const id = entry.target.getAttribute('id');
+            
+            // Remove active class from all nav items
             document.querySelectorAll('.resource-nav .nav-item').forEach(link => {
-                link.style.borderLeftColor = 'transparent';
-                link.style.background = 'transparent';
-                link.style.paddingLeft = '15px';
+                link.classList.remove('active');
             });
+            
+            // Add active class to current nav item
             const activeLink = document.querySelector(`.resource-nav .nav-item[href="#${id}"]`);
             if (activeLink) {
-                activeLink.style.borderLeftColor = 'var(--two)';
-                activeLink.style.background = 'rgba(79, 91, 201, 0.1)';
-                activeLink.style.paddingLeft = '20px';
+                activeLink.classList.add('active');
             }
         }
     });
@@ -62,4 +63,12 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.resource-section[id]').forEach(section => {
     observer.observe(section);
+});
+
+// Set initial active state on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const firstLink = document.querySelector('.resource-nav .nav-item[href="#programming"]');
+    if (firstLink) {
+        firstLink.classList.add('active');
+    }
 });

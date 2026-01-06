@@ -31,7 +31,8 @@
             <a href="calendar.html" class="mobile-nav-link"><i class="fas fa-calendar"></i> Calendar</a>
             <a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a>
             <a href="gallery.html" class="mobile-nav-link"><i class="fas fa-images"></i> Gallery</a>
-            <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-images"></i> Documentation</a>
+            <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-file-alt"></i> Documentation</a>
+            <a href="#" class="mobile-nav-link contact-trigger"><i class="fas fa-envelope"></i> Contact Us</a>
         </div>
     </header>
 
@@ -97,7 +98,7 @@
             <div class="sidebar-section mini-events-list">
                 <h3>Upcoming Events</h3>
                 <div id="upcomingEventsList" class="upcoming-list">
-                    <!-- Will be populated by JS -->
+                    <p style="color: #666; font-size: 0.85rem; text-align: center; padding: 20px;">No upcoming events</p>
                 </div>
             </div>
         </aside>
@@ -107,10 +108,10 @@
             <!-- Calendar Controls -->
             <div class="calendar-controls">
                 <div class="controls-left">
-                    <button class="nav-btn" id="prevPeriod">
+                    <button class="nav-btn" id="prevPeriod" title="Previous">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button class="nav-btn" id="nextPeriod">
+                    <button class="nav-btn" id="nextPeriod" title="Next">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                     <h2 class="current-period" id="currentPeriod">January 2026</h2>
@@ -123,7 +124,7 @@
                     <button class="icon-btn" id="shareCalendar" title="Share Calendar">
                         <i class="fas fa-share-alt"></i>
                     </button>
-                    <button class="icon-btn" id="exportCalendar" title="Download Calendar Image">
+                    <button class="icon-btn" id="exportCalendar" title="Download Calendar">
                         <i class="fas fa-download"></i>
                     </button>
                 </div>
@@ -143,27 +144,27 @@
                         <div class="header-cell">Sat</div>
                     </div>
                     <div class="calendar-grid" id="monthGrid">
-                        <!-- Will be populated by JS -->
+                        <!-- Populated by JS -->
                     </div>
                 </div>
 
                 <!-- Week View -->
                 <div id="weekView" class="calendar-view">
                     <div class="week-header" id="weekHeader">
-                        <!-- Will be populated by JS -->
+                        <!-- Populated by JS -->
                     </div>
                     <div class="week-grid" id="weekGrid">
-                        <!-- Will be populated by JS -->
+                        <!-- Populated by JS -->
                     </div>
                 </div>
 
                 <!-- Day View -->
                 <div id="dayView" class="calendar-view">
                     <div class="day-header" id="dayHeader">
-                        <!-- Will be populated by JS -->
+                        <!-- Populated by JS -->
                     </div>
                     <div class="day-timeline" id="dayTimeline">
-                        <!-- Will be populated by JS -->
+                        <!-- Populated by JS -->
                     </div>
                 </div>
             </div>
@@ -172,6 +173,7 @@
 
     <!-- Event Detail Modal -->
     <div id="eventModal" class="modal">
+        <div class="modal-overlay"></div>
         <div class="modal-content event-detail-modal">
             <button class="modal-close" id="closeEventModal">
                 <i class="fas fa-times"></i>
@@ -185,9 +187,6 @@
             <div class="event-detail-actions">
                 <button class="btn-primary" id="rsvpEventBtn">
                     <i class="fas fa-check"></i> RSVP to Event
-                </button>
-                <button class="btn-secondary" id="addToCalendarBtn">
-                    <i class="fas fa-calendar-plus"></i> Add to My Calendar
                 </button>
             </div>
         </div>
