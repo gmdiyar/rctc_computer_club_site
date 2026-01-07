@@ -91,11 +91,3 @@ def update_event(event_id):
         return jsonify(response.data[0]), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-# For Vercel serverless
-def handler(request):
-    with app.request_context(request.environ):
-        try:
-            return app.full_dispatch_request()
-        except Exception as e:
-            return jsonify({'error': str(e)}), 500
