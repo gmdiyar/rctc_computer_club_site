@@ -51,18 +51,22 @@ def create_announcement():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/announcements/<int:announcement_id>', methods=['DELETE'])
+@app.route('/api/announcements/<int:announcement_id>', methods=['DELETE', 'OPTIONS'])
 def delete_announcement(announcement_id):
     """Delete an announcement"""
+    if request.method == 'OPTIONS':
+        return '', 204
     try:
         supabase.table('announcements').delete().eq('id', announcement_id).execute()
         return jsonify({'message': 'Announcement deleted'}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/announcements/clear', methods=['DELETE'])
+@app.route('/api/announcements/clear', methods=['DELETE', 'OPTIONS'])
 def clear_announcements():
     """Clear all announcements"""
+    if request.method == 'OPTIONS':
+        return '', 204
     try:
         # Get all announcement IDs
         response = supabase.table('announcements').select('id').execute()
