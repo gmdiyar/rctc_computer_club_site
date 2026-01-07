@@ -4,6 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Announcements Admin - RCTC CS Club</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+        td, th {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        input, textarea, select {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            background: #4f5bc9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #3d47a0;
+        }
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        .error {
+            color: #9e1212;
+            background: #ffe0e0;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success {
+            color: #4CAF50;
+            background: #e8f5e9;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
     <h1>Announcements Manager</h1>
@@ -12,6 +71,7 @@
     <hr>
     
     <h2>Post New Announcement</h2>
+    <div id="formMessage"></div>
     <form id="announcementForm">
         <table>
             <tr>
@@ -52,60 +112,87 @@
     
     <h2>Current Announcements (<span id="announcementCount">0</span>)</h2>
     <button onclick="refreshAnnouncementList()">Refresh List</button>
-    <button onclick="clearAllAnnouncements()" style="color: red;">Clear All Announcements</button>
+    <button onclick="clearAllAnnouncements()" style="background: #9e1212;">Clear All Announcements</button>
     
     <div id="announcementsList"></div>
 
     <script>
-        // Load existing announcements from localStorage
-        function loadAnnouncements() {
-            const stored = localStorage.getItem('clubAnnouncements');
-            if (stored) {
-                return JSON.parse(stored).map(announcement => ({
-                    ...announcement,
-                    date: new Date(announcement.date)
-                }));
+        // REPLACE THIS WITH YOUR VERCEL URL
+        const API_BASE_URL = 'https://rctc-computer-club-site.vercel.app';
+        
+        // Load announcements from backend API
+        async function loadAnnouncements() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/announcements`);
+                if (!response.ok) throw new Error('Failed to load announcements');
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading announcements:', error);
+                showMessage('Error loading announcements: ' + error.message, 'error');
+                return [];
             }
-            return [];
         }
 
-        function saveAnnouncements(announcements) {
-            localStorage.setItem('clubAnnouncements', JSON.stringify(announcements));
+        // Show message to user
+        function showMessage(message, type = 'success') {
+            const messageDiv = document.getElementById('formMessage');
+            messageDiv.innerHTML = `<div class="${type}">${message}</div>`;
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
         }
 
         // Add announcement form handler
-        document.getElementById('announcementForm').addEventListener('submit', (e) => {
+        document.getElementById('announcementForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const announcements = loadAnnouncements();
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Posting...';
             
             const announcement = {
-                id: Date.now(),
                 title: document.getElementById('title').value,
                 content: document.getElementById('content').value,
                 type: document.getElementById('type').value,
                 author: document.getElementById('author').value || 'Admin',
-                link: document.getElementById('link').value,
-                date: new Date().toISOString()
+                link: document.getElementById('link').value
             };
             
-            announcements.push(announcement);
-            saveAnnouncements(announcements);
-            
-            alert('Announcement posted successfully!');
-            e.target.reset();
-            document.getElementById('author').value = 'Admin'; // Reset to default
-            refreshAnnouncementList();
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/announcements`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(announcement)
+                });
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error || 'Failed to post announcement');
+                }
+                
+                showMessage('✅ Announcement posted successfully!', 'success');
+                e.target.reset();
+                document.getElementById('author').value = 'Admin';
+                await refreshAnnouncementList();
+            } catch (error) {
+                console.error('Error posting announcement:', error);
+                showMessage('❌ Failed to post announcement: ' + error.message, 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Post Announcement';
+            }
         });
 
         // Display all announcements
-        function refreshAnnouncementList() {
-            const announcements = loadAnnouncements();
+        async function refreshAnnouncementList() {
+            const announcements = await loadAnnouncements();
             const container = document.getElementById('announcementsList');
             document.getElementById('announcementCount').textContent = announcements.length;
             
             if (announcements.length === 0) {
-                container.innerHTML = '<p><em>No announcements posted yet.</em></p>';
+                container.innerHTML = '<p class="loading"><em>No announcements posted yet.</em></p>';
                 return;
             }
             
@@ -136,7 +223,7 @@
                 html += `<td>${preview}</td>`;
                 html += `<td>
                     <button onclick="viewAnnouncement(${announcement.id})">View</button>
-                    <button onclick="deleteAnnouncement(${announcement.id})" style="color: red;">Delete</button>
+                    <button onclick="deleteAnnouncement(${announcement.id})" style="background: #9e1212;">Delete</button>
                 </td>`;
                 html += '</tr>';
             });
@@ -146,8 +233,8 @@
         }
 
         // View full announcement
-        function viewAnnouncement(announcementId) {
-            const announcements = loadAnnouncements();
+        async function viewAnnouncement(announcementId) {
+            const announcements = await loadAnnouncements();
             const announcement = announcements.find(a => a.id === announcementId);
             
             if (announcement) {
@@ -168,23 +255,41 @@ ${announcement.link ? 'Link: ' + announcement.link : ''}
         }
 
         // Delete single announcement
-        function deleteAnnouncement(announcementId) {
+        async function deleteAnnouncement(announcementId) {
             if (confirm('Are you sure you want to delete this announcement?')) {
-                let announcements = loadAnnouncements();
-                announcements = announcements.filter(a => a.id !== announcementId);
-                saveAnnouncements(announcements);
-                alert('Announcement deleted!');
-                refreshAnnouncementList();
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/announcements/${announcementId}`, {
+                        method: 'DELETE'
+                    });
+                    
+                    if (!response.ok) throw new Error('Failed to delete announcement');
+                    
+                    showMessage('✅ Announcement deleted!', 'success');
+                    await refreshAnnouncementList();
+                } catch (error) {
+                    console.error('Error deleting announcement:', error);
+                    showMessage('❌ Failed to delete announcement: ' + error.message, 'error');
+                }
             }
         }
 
         // Clear all announcements
-        function clearAllAnnouncements() {
+        async function clearAllAnnouncements() {
             if (confirm('Are you sure you want to delete ALL announcements? This cannot be undone!')) {
                 if (confirm('Really delete everything? This is your last warning!')) {
-                    localStorage.removeItem('clubAnnouncements');
-                    alert('All announcements cleared!');
-                    refreshAnnouncementList();
+                    try {
+                        const response = await fetch(`${API_BASE_URL}/api/announcements/clear`, {
+                            method: 'DELETE'
+                        });
+                        
+                        if (!response.ok) throw new Error('Failed to clear announcements');
+                        
+                        showMessage('✅ All announcements cleared!', 'success');
+                        await refreshAnnouncementList();
+                    } catch (error) {
+                        console.error('Error clearing announcements:', error);
+                        showMessage('❌ Failed to clear announcements: ' + error.message, 'error');
+                    }
                 }
             }
         }

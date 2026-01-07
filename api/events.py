@@ -5,7 +5,7 @@ from datetime import datetime
 from supabase import create_client, Client
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]}})
 
 # Initialize Supabase client
 supabase_url = os.environ.get("SUPABASE_URL")
