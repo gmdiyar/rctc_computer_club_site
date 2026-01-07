@@ -58,7 +58,7 @@ def create_announcement():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/announcements/<int:announcement_id>', methods=['DELETE', 'OPTIONS'])
+@app.route('/api/announcements/<int:announcement_id>/delete', methods=['POST', 'OPTIONS'])
 def delete_announcement(announcement_id):
     """Delete an announcement"""
     if request.method == 'OPTIONS':
@@ -69,7 +69,7 @@ def delete_announcement(announcement_id):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/announcements/clear', methods=['DELETE', 'OPTIONS'])
+@app.route('/api/announcements/clear', methods=['POST', 'OPTIONS'])
 def clear_announcements():
     """Clear all announcements"""
     if request.method == 'OPTIONS':

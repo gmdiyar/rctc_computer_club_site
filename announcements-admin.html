@@ -178,7 +178,7 @@
                 await refreshAnnouncementList();
             } catch (error) {
                 console.error('Error posting announcement:', error);
-                showMessage('Failed to post announcement: ' + error.message, 'error');
+                showMessage('❌ Failed to post announcement: ' + error.message, 'error');
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Post Announcement';
@@ -258,8 +258,8 @@ ${announcement.link ? 'Link: ' + announcement.link : ''}
         async function deleteAnnouncement(announcementId) {
             if (confirm('Are you sure you want to delete this announcement?')) {
                 try {
-                    const response = await fetch(`${API_BASE_URL}/api/announcements/${announcementId}`, {
-                        method: 'DELETE'
+                    const response = await fetch(`${API_BASE_URL}/api/announcements/${announcementId}/delete`, {
+                        method: 'POST'
                     });
                     
                     if (!response.ok) throw new Error('Failed to delete announcement');
@@ -268,7 +268,7 @@ ${announcement.link ? 'Link: ' + announcement.link : ''}
                     await refreshAnnouncementList();
                 } catch (error) {
                     console.error('Error deleting announcement:', error);
-                    showMessage('Failed to delete announcement: ' + error.message, 'error');
+                    showMessage('❌ Failed to delete announcement: ' + error.message, 'error');
                 }
             }
         }
@@ -279,7 +279,7 @@ ${announcement.link ? 'Link: ' + announcement.link : ''}
                 if (confirm('Really delete everything? This is your last warning!')) {
                     try {
                         const response = await fetch(`${API_BASE_URL}/api/announcements/clear`, {
-                            method: 'DELETE'
+                            method: 'POST'
                         });
                         
                         if (!response.ok) throw new Error('Failed to clear announcements');
@@ -288,7 +288,7 @@ ${announcement.link ? 'Link: ' + announcement.link : ''}
                         await refreshAnnouncementList();
                     } catch (error) {
                         console.error('Error clearing announcements:', error);
-                        showMessage('Failed to clear announcements: ' + error.message, 'error');
+                        showMessage('❌ Failed to clear announcements: ' + error.message, 'error');
                     }
                 }
             }
