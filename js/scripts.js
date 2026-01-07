@@ -1,3 +1,8 @@
+// ==============
+// CONFIGURATION
+// ==============
+const API_BASE_URL = 'https://rctc-computer-club-site.vercel.app/';
+
 // Mobile menu toggle
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -60,14 +65,18 @@ function showSlide(index) {
 }
 
 // Previous slide
-prevBtn.addEventListener('click', () => {
-    showSlide(currentSlide - 1);
-});
+if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+        showSlide(currentSlide - 1);
+    });
+}
 
 // Next slide
-nextBtn.addEventListener('click', () => {
-    showSlide(currentSlide + 1);
-});
+if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+        showSlide(currentSlide + 1);
+    });
+}
 
 // Dot navigation
 dots.forEach((dot, index) => {
@@ -83,15 +92,17 @@ let autoSlideInterval = setInterval(() => {
 
 // Pause auto-advance on hover
 const slider = document.getElementById('slider');
-slider.addEventListener('mouseenter', () => {
-    clearInterval(autoSlideInterval);
-});
+if (slider) {
+    slider.addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+    });
 
-slider.addEventListener('mouseleave', () => {
-    autoSlideInterval = setInterval(() => {
-        showSlide(currentSlide + 1);
-    }, 5000);
-});
+    slider.addEventListener('mouseleave', () => {
+        autoSlideInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+    });
+}
 
 // Keyboard navigation for slider
 document.addEventListener('keydown', (e) => {
@@ -420,31 +431,39 @@ if (contactForm) {
 }
 
 // ========================================
-// ANNOUNCEMENTS FUNCTIONALITY
+// ANNOUNCEMENTS FUNCTIONALITY (BACKEND API)
 // ========================================
 
-// Load announcements from localStorage
-function loadAnnouncements() {
-    const stored = localStorage.getItem('clubAnnouncements');
-    if (stored) {
-        return JSON.parse(stored).map(announcement => ({
+// Load announcements from backend API
+async function loadAnnouncements() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/announcements`);
+        if (!response.ok) {
+            throw new Error('Failed to load announcements');
+        }
+        const data = await response.json();
+        return data.map(announcement => ({
             ...announcement,
             date: new Date(announcement.date)
         }));
+    } catch (error) {
+        console.error('Error loading announcements:', error);
+        return [];
     }
-    return [];
 }
 
 // Display announcements on the page
-function displayAnnouncements() {
-    const announcements = loadAnnouncements();
+async function displayAnnouncements() {
+    const announcements = await loadAnnouncements();
     const container = document.getElementById('announcementsContainer');
     const countElement = document.getElementById('announcementCount');
     
     if (!container) return; // Not on index page
     
     // Update count
-    countElement.textContent = announcements.length;
+    if (countElement) {
+        countElement.textContent = announcements.length;
+    }
     
     if (announcements.length === 0) {
         container.innerHTML = '<p class="no-announcements">No announcements at this time. Check back later!</p>';
@@ -469,7 +488,7 @@ function displayAnnouncements() {
                     <span><i class="fas fa-calendar"></i> ${formatAnnouncementDate(announcement.date)}</span>
                     <span><i class="fas fa-user"></i> ${announcement.author || 'Admin'}</span>
                 </div>
-                ${announcement.link ? `<a href="${announcement.link}" class="announcement-link">Read More <i class="fas fa-arrow-right"></i></a>` : ''}
+                ${announcement.link ? `<a href="${announcement.link}" class="announcement-link" target="_blank">Read More <i class="fas fa-arrow-right"></i></a>` : ''}
             </div>
         </div>
     `).join('');
@@ -500,6 +519,9 @@ function formatAnnouncementDate(date) {
 // Initialize announcements on page load
 document.addEventListener('DOMContentLoaded', () => {
     displayAnnouncements();
+    
+    // Refresh announcements every 30 seconds
+    setInterval(displayAnnouncements, 30000);
 });
 
 // Export for admin panel
@@ -508,4 +530,4 @@ window.announcementsAPI = {
     displayAnnouncements
 };
 
-console.log('RCTC CS Club - Website loaded successfully');
+console.log('RCTC CS Club - Website loaded successfully (using backend API)');
