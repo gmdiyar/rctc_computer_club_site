@@ -7,6 +7,13 @@ from supabase import create_client, Client
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "DELETE", "OPTIONS"]}})
 
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
+
 # Initialize Supabase client
 supabase_url = os.environ.get("SUPABASE_URL")
 supabase_key = os.environ.get("SUPABASE_SERVICE_KEY")
@@ -79,3 +86,7 @@ def clear_announcements():
         return jsonify({'message': 'All announcements cleared'}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+# Vercel serverless handler
+if __name__ == '__main__':
+    app.run()
