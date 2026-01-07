@@ -67,13 +67,14 @@ button {
 
 .navbar {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
   max-width: 1600px;
   margin: 0 auto;
+  position: relative;
 }
-
 .nav-logo {
   font-weight: 700;
   font-size: 32px;

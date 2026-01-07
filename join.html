@@ -6,71 +6,6 @@
     <title>Join Us - RCTC Computer Science Club</title>
     <link rel="stylesheet" href="css/join-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        /* Form Status Messages */
-        .form-status {
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-            display: none;
-            animation: statusSlideIn 0.3s ease;
-        }
-
-        @keyframes statusSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .form-status.success {
-            display: block;
-            background: #e8f5e9;
-            color: #2e7d32;
-            border: 2px solid #4caf50;
-        }
-
-        .form-status.error {
-            display: block;
-            background: #ffebee;
-            color: #c62828;
-            border: 2px solid #f44336;
-        }
-
-        .form-status.loading {
-            display: block;
-            background: #e3f2fd;
-            color: #1976d2;
-            border: 2px solid #2196f3;
-        }
-
-        .submit-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .fa-spinner {
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    </style>
 </head>
 <body>
     <header id="header">
@@ -94,7 +29,8 @@
             <a href="calendar.html" class="mobile-nav-link"><i class="fas fa-calendar"></i> Calendar</a>
             <a href="resources.html" class="mobile-nav-link"><i class="fas fa-book"></i> Resources</a>
             <a href="gallery.html" class="mobile-nav-link"><i class="fas fa-images"></i> Gallery</a>
-            <a href="documentation.html" class="mobile-nav-link"><i class="fas fa-images"></i> Documentation</a>
+            <a href="documentation.html" class="mobile-nav-link"><i class="fa-solid fa-file"></i> Documentation</a>
+            <a href="#" class="mobile-nav-link contact-trigger"><i class="fas fa-envelope"></i> Contact Us</a>
         </div>
     </header>
 

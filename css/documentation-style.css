@@ -128,7 +128,7 @@ button:active {
   50% { transform: scale(1.05); }
 }
 
-/* Hamburger & Mobile Menu */
+/* Hamburger Menu */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -141,13 +141,13 @@ button:active {
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: white;
+  background-color: var(--one);
   border-radius: 3px;
   transition: all 0.3s ease;
 }
 
 .hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(7px, 7px);
+  transform: rotate(45deg) translate(7px, 8px);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -155,8 +155,9 @@ button:active {
 }
 
 .hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+  transform: rotate(-45deg) translate(4px, -4px);
 }
+
 
 .mobile-menu {
   position: absolute;
