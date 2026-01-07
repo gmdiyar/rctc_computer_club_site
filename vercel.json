@@ -2,22 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/announcements.py",
+      "src": "api/*.py",
       "use": "@vercel/python"
-    },
-    {
-      "src": "api/events.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/announcements(.*)",
-      "dest": "api/announcements.py"
-    },
-    {
-      "src": "/api/events(.*)",
-      "dest": "api/events.py"
     }
   ]
 }
