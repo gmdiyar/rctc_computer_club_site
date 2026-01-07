@@ -1,7 +1,7 @@
 // ==============
 // CONFIGURATION
 // ==============
-const API_BASE_URL = 'https://rctc-computer-club-site.vercel.app/';
+const API_BASE_URL = 'https://rctc-computer-club-site.vercel.app';
 
 // Mobile menu toggle
 const hamburger = document.getElementById('hamburger');
