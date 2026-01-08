@@ -21,10 +21,9 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  scrollbar-width: thin;
-  scrollbar-color: var(--three) #f0f0f0;
 }
 
+/* Custom Scrollbar */
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -51,6 +50,8 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   background: #f5f5f5;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -71,7 +72,9 @@ button:active {
   transform: scale(0.95);
 }
 
-/* Header */
+/* ==========================================
+   HEADER
+   ========================================== */
 #header {
   background: linear-gradient(to right, var(--one), var(--five));
   position: sticky;
@@ -82,6 +85,7 @@ button:active {
 
 .navbar {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
@@ -137,6 +141,7 @@ button:active {
   padding: 10px;
   z-index: 101;
   margin-left: 20px;
+  cursor: pointer;
 }
 
 .hamburger span {
@@ -159,8 +164,9 @@ button:active {
   transform: rotate(-45deg) translate(4px, -4px);
 }
 
-/* Mobile Menu */
+/* Mobile Menu Dropdown */
 .mobile-menu {
+  display: none;
   position: absolute;
   top: 100%;
   right: 1rem;
@@ -168,16 +174,26 @@ button:active {
   flex-direction: column;
   padding: 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
   min-width: 250px;
   border-radius: 0 0 8px 8px;
+  z-index: 101;
 }
 
 .mobile-menu.active {
-  max-height: 500px;
+  display: flex;
   padding: 20px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .mobile-nav-link {
@@ -194,7 +210,9 @@ button:active {
   padding-left: 25px;
 }
 
-/* Calendar Wrapper */
+/* ==========================================
+   CALENDAR WRAPPER
+   ========================================== */
 .calendar-wrapper {
   display: flex;
   flex: 1;
@@ -202,16 +220,25 @@ button:active {
   overflow: hidden;
 }
 
-/* Sidebar */
+/* ==========================================
+   SIDEBAR (LEFT) - On left side for desktop
+   ========================================== */
 .calendar-sidebar {
   width: 280px;
   background: white;
   padding: 20px;
   overflow-y: auto;
+  overflow-x: hidden;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   gap: 25px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-section h3 {
@@ -241,6 +268,7 @@ button:active {
   font-weight: 600;
   transition: all 0.2s ease;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 .view-mode-btn:hover {
@@ -267,6 +295,7 @@ button:active {
   margin-bottom: 8px;
   transition: all 0.2s ease;
   text-decoration: none;
+  font-size: 0.9rem;
 }
 
 .action-btn:hover {
@@ -314,23 +343,16 @@ button:active {
   accent-color: var(--two);
 }
 
-.category-filter input[type="checkbox"]:checked {
-  transform: scale(1.1);
-}
-
 .category-filter:has(input:checked) {
   background: rgba(79, 91, 201, 0.05);
   border-color: var(--two);
-}
-
-.category-filter:has(input:checked) .color-dot {
-  box-shadow: 0 0 0 3px rgba(79, 91, 201, 0.2);
 }
 
 .category-filter span:last-child {
   font-weight: 600;
   color: var(--one);
   flex: 1;
+  font-size: 0.9rem;
 }
 
 .color-dot {
@@ -347,59 +369,16 @@ button:active {
 .color-dot.meeting { background: var(--meeting); }
 .color-dot.deadline { background: var(--deadline); }
 
-.upcoming-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.upcoming-event-item {
-  padding: 10px;
-  background: #f9f9f9;
-  border-left: 3px solid var(--two);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.upcoming-event-item:hover {
-  background: var(--five);
-  transform: translateX(3px);
-}
-
-.upcoming-event-item .event-date-small {
-  font-size: 0.75rem;
-  color: #666;
-  margin-bottom: 3px;
-}
-
-.upcoming-event-item .event-title-small {
-  font-size: 0.85rem;
-  color: var(--one);
-  font-weight: 600;
-}
-
-/* Right Column */
-.calendar-right-column {
-  width: 280px;
-  background: white;
-  padding: 20px;
-  overflow-y: auto;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-/* Main Calendar Area */
+/* ==========================================
+   MAIN CALENDAR AREA
+   ========================================== */
 .calendar-main {
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background: #fafafa;
+  min-width: 0;
 }
 
 /* Calendar Controls */
@@ -412,12 +391,21 @@ button:active {
   border-bottom: 2px solid #f0f0f0;
   gap: 20px;
   flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 .controls-left {
   display: flex;
   align-items: center;
   gap: 15px;
+  flex-wrap: wrap;
+}
+
+.controls-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .nav-btn {
@@ -431,6 +419,7 @@ button:active {
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .nav-btn:hover {
@@ -442,28 +431,25 @@ button:active {
   font-size: 1.5rem;
   color: var(--one);
   font-weight: 700;
-  min-width: 200px;
-}
-
-.controls-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
 }
 
 .search-box {
   position: relative;
   display: flex;
   align-items: center;
+  flex: 1;
+  min-width: 200px;
 }
 
 .search-box i {
   position: absolute;
   left: 12px;
   color: var(--two);
+  pointer-events: none;
 }
 
 .search-box input {
+  width: 100%;
   padding: 10px 15px 10px 35px;
   background: #f5f5f5;
   border: 2px solid transparent;
@@ -471,7 +457,6 @@ button:active {
   color: var(--one);
   font-family: "Space Mono", monospace;
   font-size: 0.85rem;
-  min-width: 220px;
   transition: all 0.2s ease;
 }
 
@@ -492,6 +477,7 @@ button:active {
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .icon-btn:hover {
@@ -505,6 +491,8 @@ button:active {
   padding: 20px;
   overflow: auto;
   position: relative;
+  -webkit-overflow-scrolling: touch;
+  min-height: 0;
 }
 
 .calendar-view {
@@ -527,7 +515,9 @@ button:active {
   }
 }
 
-/* Month View */
+/* ==========================================
+   MONTH VIEW
+   ========================================== */
 .calendar-header-row {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -542,6 +532,7 @@ button:active {
   text-align: center;
   font-weight: 700;
   border-radius: 8px 8px 0 0;
+  font-size: 0.9rem;
 }
 
 .calendar-grid {
@@ -553,10 +544,10 @@ button:active {
 }
 
 .calendar-cell {
-  min-height: 120px;
-  max-height: 120px;
+  min-height: 140px;
+  max-height: 140px;
   background: white;
-  padding: 8px;
+  padding: 10px;
   position: relative;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -587,6 +578,7 @@ button:active {
   color: var(--one);
   margin-bottom: 5px;
   font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .calendar-cell.today .cell-date {
@@ -598,22 +590,9 @@ button:active {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  overflow-y: auto; /* Make scrollable */
-  flex: 1; /* Take remaining space */
-  padding-right: 4px; /* Space for scrollbar */
-}
-
-.cell-events::-webkit-scrollbar {
-  width: 4px;
-}
-
-.cell-events::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.cell-events::-webkit-scrollbar-thumb {
-  background: var(--three);
-  border-radius: 2px;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 4px;
 }
 
 .event-item {
@@ -627,6 +606,7 @@ button:active {
   cursor: pointer;
   transition: all 0.2s ease;
   border-left: 3px solid currentColor;
+  flex-shrink: 0;
 }
 
 .event-item:hover {
@@ -664,6 +644,7 @@ button:active {
   color: #666;
   margin-top: 3px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .event-more:hover {
@@ -671,7 +652,9 @@ button:active {
   text-decoration: underline;
 }
 
-/* Week View */
+/* ==========================================
+   WEEK VIEW
+   ========================================== */
 .week-header {
   display: grid;
   grid-template-columns: 80px repeat(7, 1fr);
@@ -686,6 +669,7 @@ button:active {
   text-align: center;
   font-weight: 700;
   border-radius: 8px 8px 0 0;
+  font-size: 0.85rem;
 }
 
 .week-header-cell.time-label {
@@ -697,8 +681,9 @@ button:active {
   grid-template-columns: 80px repeat(7, 1fr);
   gap: 2px;
   background: #e0e0e0;
-  max-height: calc(100vh - 250px);
+  max-height: calc(100vh - 280px);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .time-slot {
@@ -713,21 +698,32 @@ button:active {
 .week-cell {
   background: white;
   min-height: 60px;
+  max-height: 60px;
   padding: 5px;
   position: relative;
   cursor: pointer;
   transition: background 0.2s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.week-cell .event-item {
+  margin-bottom: 2px;
+  font-size: 0.65rem;
+  padding: 2px 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .week-cell:hover {
   background: #f9f9f9;
 }
 
-.week-cell .event-item {
-  margin-bottom: 3px;
-}
-
-/* Day View */
+/* ==========================================
+   DAY VIEW
+   ========================================== */
 .day-header {
   background: var(--two);
   color: white;
@@ -747,6 +743,7 @@ button:active {
   border-radius: 0 0 8px 8px;
   max-height: calc(100vh - 280px);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .timeline-hour {
@@ -791,7 +788,59 @@ button:active {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Modal Styles */
+/* ==========================================
+   RIGHT COLUMN - On right side for desktop
+   ========================================== */
+.calendar-right-column {
+  width: 280px;
+  background: white;
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.upcoming-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.upcoming-event-item {
+  padding: 10px;
+  background: #f9f9f9;
+  border-left: 3px solid var(--two);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upcoming-event-item:hover {
+  background: var(--five);
+  transform: translateX(3px);
+}
+
+.upcoming-event-item .event-date-small {
+  font-size: 0.75rem;
+  color: #666;
+  margin-bottom: 3px;
+}
+
+.upcoming-event-item .event-title-small {
+  font-size: 0.85rem;
+  color: var(--one);
+  font-weight: 600;
+}
+
+/* ==========================================
+   MODAL
+   ========================================== */
 .modal {
   display: none;
   position: fixed;
@@ -870,6 +919,7 @@ button:active {
 
 .event-detail-header {
   margin-bottom: 20px;
+  padding-right: 40px;
 }
 
 .event-detail-header h2 {
@@ -895,6 +945,7 @@ button:active {
   width: 20px;
   color: var(--two);
   margin-top: 2px;
+  flex-shrink: 0;
 }
 
 .detail-row .detail-content {
@@ -918,7 +969,6 @@ button:active {
   justify-content: flex-end;
 }
 
-/* Button Styles */
 .btn-primary {
   padding: 12px 24px;
   border-radius: 8px;
@@ -930,6 +980,7 @@ button:active {
   transition: all 0.2s ease;
   background: var(--two);
   color: white;
+  border: none;
 }
 
 .btn-primary:hover {
@@ -938,7 +989,9 @@ button:active {
   box-shadow: 0 4px 12px rgba(79, 91, 201, 0.3);
 }
 
-/* Toast Notification */
+/* ==========================================
+   TOAST
+   ========================================== */
 .toast {
   position: fixed;
   bottom: -100px;
@@ -955,6 +1008,7 @@ button:active {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   z-index: 2000;
   transition: bottom 0.3s ease;
+  max-width: 90%;
 }
 
 .toast.show {
@@ -965,91 +1019,9 @@ button:active {
   font-size: 1.2rem;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .calendar-sidebar {
-    width: 240px;
-  }
-}
-
-@media (max-width: 868px) {
-  .nav-menu {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .calendar-wrapper {
-    flex-direction: column;
-  }
-
-  .calendar-sidebar,
-  .calendar-right-column {
-    width: 100%;
-    max-height: 300px;
-    flex-direction: row;
-    overflow-x: auto;
-    padding: 15px;
-  }
-
-  .sidebar-section {
-    min-width: 200px;
-  }
-
-  .calendar-controls {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .controls-left,
-  .controls-right {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .current-period {
-    font-size: 1.2rem;
-  }
-
-  .search-box input {
-    min-width: 150px;
-  }
-
-  .calendar-cell {
-    min-height: 80px;
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .calendar-grid {
-    gap: 1px;
-  }
-
-  .calendar-cell {
-    min-height: 60px;
-    padding: 4px;
-  }
-
-  .cell-date {
-    font-size: 0.85rem;
-  }
-
-  .event-item {
-    font-size: 0.65rem;
-    padding: 2px 4px;
-  }
-
-  .modal-content {
-    padding: 20px;
-  }
-}
-
 /* ==========================================
-   RESPONSIVE DESIGN - MEDIA QUERIES
+   RESPONSIVE - TABLET
    ========================================== */
-
-/* Tablet and Below - Hide Desktop Nav */
 @media (max-width: 868px) {
   .navbar-nav {
     display: none;
@@ -1060,194 +1032,668 @@ button:active {
   }
 }
 
-/* Tablet - Hide Right Column */
 @media (max-width: 1024px) {
-  .right-column {
+  :root {
+    --header-height: 65px;
+  }
+  
+  .navbar {
+    padding: 12px 20px;
+  }
+  
+  .nav-logo {
+    font-size: 28px;
+  }
+  
+  .current-period {
+    font-size: 1.3rem;
+  }
+  
+  .calendar-right-column {
     display: none;
   }
   
-  .timeline::before {
-    left: 30px;
-  }
-  
-  .timeline-item {
-    flex-direction: row !important;
-  }
-  
-  .timeline-marker {
-    left: 30px;
-  }
-  
-  .timeline-content {
-    width: calc(100% - 80px);
-    margin-left: 80px !important;
-    text-align: left !important;
+  .calendar-sidebar {
+    width: 240px;
   }
 }
 
-/* Mobile - Full Responsive Layout */
+/* ==========================================
+   RESPONSIVE - MOBILE
+   ========================================== */
 @media (max-width: 768px) {
-  /* Main wrapper becomes column */
-  .main-wrapper {
-    flex-direction: column;
+  :root {
+    --header-height: 60px;
   }
   
-  /* Left column full width */
-  .left-column {
-    width: 100%;
-    position: relative;
-    top: 0;
-    height: auto;
-    max-height: none;
+  body {
+    overflow-x: hidden;
   }
   
-  /* Left column horizontal scroll */
-  .inner-left-column {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    overflow-x: auto;
-    padding: 15px;
-    -webkit-overflow-scrolling: touch;
+  /* Header adjustments */
+  .navbar {
+    padding: 10px 15px;
   }
   
-  .inner-left-column h3 {
-    display: none;
+  .nav-logo {
+    font-size: 24px;
   }
   
-  .stat-box {
-    min-width: 120px;
-    flex-shrink: 0;
-    margin-bottom: 0;
+  .hamburger {
+    padding: 8px;
   }
   
-  /* Right column full width at bottom */
-  .right-column {
-    display: block;
-    width: 100%;
-    position: relative;
-    top: 0;
-    height: auto;
-  }
-  
-  /* Mobile menu full width */
   .mobile-menu {
     right: 0;
     left: 0;
     width: 100%;
     min-width: 100%;
+    border-radius: 0 0 8px 8px;
   }
   
-  /* Content adjustments */
-  .main-content {
-    padding: 20px 15px;
+  /* Calendar wrapper becomes vertical stack on mobile */
+  .calendar-wrapper {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
   }
   
-  .content-container > h1 {
-    font-size: 2rem;
+  /* Main calendar takes space but doesn't overflow */
+  .calendar-main {
+    min-height: 0;
+    flex: 0 0 auto;
   }
   
-  .content-container > p {
-    font-size: 1rem;
-    margin-bottom: 30px;
+  /* Move both sidebars to bottom in compact layout */
+  .calendar-sidebar {
+    width: 100%;
+    order: 3;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    gap: 15px;
+    overflow: visible;
+    max-height: none;
   }
   
-  /* Section adjustments */
-  .about-section {
-    padding: 30px 20px;
+  .calendar-right-column {
+    width: 100%;
+    order: 4;
+    display: block;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    gap: 15px;
+    overflow: visible;
+    max-height: none;
   }
   
-  .section-title {
-    font-size: 1.6rem;
+  /* Compact sidebar sections */
+  .sidebar-section {
+    margin-bottom: 0;
   }
   
-  .section-text {
-    font-size: 1rem;
+  .sidebar-section h3 {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
   }
   
-  /* Grids to single column */
-  .values-grid,
-  .activities-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  /* View buttons in compact row */
+  .view-buttons {
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
   }
   
-  /* Timeline mobile layout */
-  .timeline::before {
-    left: 20px;
+  .view-mode-btn {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
   }
   
-  .timeline-marker {
-    left: 20px;
-  }
-  
-  .timeline-content {
-    width: calc(100% - 60px);
-    margin-left: 60px !important;
-    text-align: left !important;
-  }
-  
-  /* CTA Section */
-  .cta-section {
-    padding: 40px 20px;
-  }
-  
-  .cta-content h2 {
-    font-size: 1.8rem;
-  }
-  
-  .cta-content p {
-    font-size: 1rem;
-  }
-}
-
-/* Small Mobile Optimizations */
-@media (max-width: 480px) {
-  .nav-logo {
-    font-size: 24px;
-  }
-  
-  .content-container > h1 {
-    font-size: 1.6rem;
-  }
-  
-  .section-title {
-    font-size: 1.4rem;
-  }
-  
-  .section-text {
+  .view-mode-btn i {
     font-size: 0.9rem;
   }
   
-  .cta-content h2 {
-    font-size: 1.5rem;
+  .action-btn {
+    padding: 10px 14px;
+    font-size: 0.85rem;
   }
   
-  .stat-number {
-    font-size: 2rem;
+  /* Compact category filters in grid */
+  .category-filters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
   
-  .value-icon,
-  .section-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
+  .category-filter {
+    padding: 8px;
+    gap: 8px;
   }
   
-  .activity-number {
-    font-size: 1.5rem;
+  .category-filter span:last-child {
+    font-size: 0.8rem;
   }
   
-  .about-section {
-    padding: 20px 15px;
+  /* Compact upcoming list */
+  .upcoming-list {
+    max-height: none;
+    overflow: visible;
+  }
+  
+  .upcoming-event-item {
+    padding: 8px;
+  }
+  
+  .upcoming-event-item .event-date-small {
+    font-size: 0.7rem;
+  }
+  
+  .upcoming-event-item .event-title-small {
+    font-size: 0.8rem;
+  }
+  
+  /* Controls stack better on mobile */
+  .calendar-controls {
+    flex-direction: column;
+    padding: 15px;
+    gap: 12px;
+  }
+  
+  .controls-left,
+  .controls-right {
+    width: 100%;
+  }
+  
+  .controls-left {
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .controls-right {
+    justify-content: stretch;
+    gap: 10px;
+  }
+  
+  .nav-btn {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .current-period {
+    font-size: 1.2rem;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .search-box {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .search-box input {
+    font-size: 0.85rem;
+    padding: 10px 12px 10px 35px;
+  }
+  
+  .icon-btn {
+    width: 44px;
+    height: 44px;
+  }
+  
+  /* Calendar container with proper scrolling */
+  .calendar-container {
+    padding: 12px;
+    overflow: auto;
+    max-height: 60vh;
+  }
+  
+  /* Month view - bigger cells on mobile */
+  .header-cell {
+    padding: 10px 4px;
+    font-size: 0.75rem;
+  }
+  
+  .calendar-grid {
+    gap: 1.5px;
+  }
+  
+  .calendar-cell {
+    min-height: 100px;
+    max-height: 100px;
+    padding: 6px;
+  }
+  
+  .calendar-cell:hover {
+    transform: none;
+  }
+  
+  .cell-date {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+  
+  .calendar-cell.today .cell-date {
+    font-size: 1rem;
+  }
+  
+  .event-item {
+    font-size: 0.65rem;
+    padding: 3px 5px;
+    border-left-width: 2px;
+  }
+  
+  .event-more {
+    font-size: 0.65rem;
+  }
+  
+  /* Week view adjustments */
+  .week-header {
+    grid-template-columns: 60px repeat(7, 1fr);
+    gap: 1.5px;
+  }
+  
+  .week-header-cell {
+    padding: 8px 4px;
+    font-size: 0.7rem;
+  }
+  
+  .week-grid {
+    grid-template-columns: 60px repeat(7, 1fr);
+    gap: 1.5px;
+    max-height: 50vh;
+  }
+  
+  .time-slot {
+    padding: 8px 4px;
+    font-size: 0.7rem;
+  }
+  
+  .week-cell {
+    min-height: 50px;
+    max-height: 50px;
+    padding: 4px;
+  }
+  
+  .week-cell .event-item {
+    font-size: 0.6rem;
+    padding: 2px 3px;
+  }
+  
+  /* Day view adjustments */
+  .day-header {
+    padding: 15px;
+  }
+  
+  .day-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .day-timeline {
+    max-height: 50vh;
+  }
+  
+  .timeline-hour {
+    grid-template-columns: 60px 1fr;
+    min-height: 70px;
+  }
+  
+  .timeline-time {
+    font-size: 0.75rem;
+    padding: 8px 4px;
+  }
+  
+  .timeline-events {
+    padding: 8px;
+  }
+  
+  .timeline-event {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+  
+  /* Modal adjustments for mobile */
+  .modal.active {
+    padding: 15px;
+  }
+  
+  .modal-content {
+    padding: 25px 20px;
+    max-height: 85vh;
+  }
+  
+  .modal-close {
+    width: 32px;
+    height: 32px;
+    top: 12px;
+    right: 12px;
+  }
+  
+  .event-detail-header {
+    padding-right: 35px;
+  }
+  
+  .event-detail-header h2 {
+    font-size: 1.4rem;
+  }
+  
+  .detail-row {
+    gap: 12px;
+  }
+  
+  .detail-row .detail-label {
+    font-size: 0.8rem;
+  }
+  
+  .detail-row .detail-value {
+    font-size: 0.9rem;
+  }
+  
+  .event-detail-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+  
+  /* Toast adjustments */
+  .toast {
+    left: 15px;
+    right: 15px;
+    transform: none;
+    padding: 12px 20px;
+    font-size: 0.85rem;
+  }
+  
+  .toast.show {
+    bottom: 20px;
   }
 }
 
-/* Touch device improvements */
+/* ==========================================
+   RESPONSIVE - SMALL MOBILE
+   ========================================== */
+@media (max-width: 480px) {
+  .nav-logo {
+    font-size: 20px;
+  }
+  
+  .hamburger span {
+    width: 22px;
+  }
+  
+  .mobile-menu {
+    padding: 15px;
+  }
+  
+  /* Sidebars stay compact */
+  .calendar-sidebar,
+  .calendar-right-column {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .sidebar-section h3 {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+  
+  .view-mode-btn {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+  
+  .action-btn {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  
+  .category-filter {
+    padding: 6px;
+    gap: 6px;
+  }
+  
+  .category-filter span:last-child {
+    font-size: 0.75rem;
+  }
+  
+  .upcoming-event-item {
+    padding: 6px;
+  }
+  
+  .upcoming-event-item .event-date-small {
+    font-size: 0.65rem;
+  }
+  
+  .upcoming-event-item .event-title-small {
+    font-size: 0.75rem;
+  }
+  
+  /* Controls more compact */
+  .calendar-controls {
+    padding: 12px;
+  }
+  
+  .controls-left {
+    gap: 8px;
+  }
+  
+  .current-period {
+    font-size: 1rem;
+  }
+  
+  .nav-btn,
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Calendar cells still readable on small screens */
+  .calendar-container {
+    padding: 8px;
+    max-height: 55vh;
+  }
+  
+  .header-cell {
+    padding: 8px 2px;
+    font-size: 0.7rem;
+  }
+  
+  .calendar-grid {
+    gap: 1px;
+  }
+  
+  .calendar-cell {
+    min-height: 80px;
+    max-height: 80px;
+    padding: 4px;
+  }
+  
+  .cell-date {
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+  }
+  
+  .calendar-cell.today .cell-date {
+    font-size: 0.95rem;
+  }
+  
+  .event-item {
+    font-size: 0.6rem;
+    padding: 2px 4px;
+  }
+  
+  .event-more {
+    font-size: 0.6rem;
+    margin-top: 2px;
+  }
+  
+  /* Week view ultra compact */
+  .week-header {
+    grid-template-columns: 50px repeat(7, 1fr);
+  }
+  
+  .week-header-cell {
+    padding: 6px 2px;
+    font-size: 0.65rem;
+  }
+  
+  .week-grid {
+    grid-template-columns: 50px repeat(7, 1fr);
+    max-height: 45vh;
+  }
+  
+  .time-slot {
+    padding: 6px 2px;
+    font-size: 0.65rem;
+  }
+  
+  .week-cell {
+    min-height: 45px;
+    max-height: 45px;
+    padding: 3px;
+  }
+  
+  .week-cell .event-item {
+    font-size: 0.55rem;
+  }
+  
+  /* Day view compact */
+  .day-header {
+    padding: 12px;
+  }
+  
+  .day-header h3 {
+    font-size: 1rem;
+  }
+  
+  .day-timeline {
+    max-height: 45vh;
+  }
+  
+  .timeline-hour {
+    grid-template-columns: 50px 1fr;
+    min-height: 60px;
+  }
+  
+  .timeline-time {
+    font-size: 0.7rem;
+  }
+  
+  .timeline-events {
+    padding: 6px;
+  }
+  
+  .timeline-event {
+    padding: 5px 8px;
+    font-size: 0.8rem;
+  }
+  
+  /* Modal ultra compact */
+  .modal.active {
+    padding: 10px;
+  }
+  
+  .modal-content {
+    padding: 20px 15px;
+  }
+  
+  .event-detail-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .detail-row {
+    gap: 10px;
+    font-size: 0.85rem;
+  }
+  
+  .btn-primary {
+    padding: 12px 18px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ==========================================
+   TOUCH DEVICE OPTIMIZATION
+   ========================================== */
 @media (hover: none) and (pointer: coarse) {
-  button,
-  a,
-  .dropdown-header {
-    min-height: 44px;
+  /* All interactive elements get larger tap targets */
+  .nav-btn,
+  .icon-btn,
+  .view-mode-btn,
+  .action-btn,
+  .category-filter,
+  .upcoming-event-item,
+  .event-item,
+  .calendar-cell {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Disable hover effects on touch */
+  .calendar-cell:hover,
+  .event-item:hover,
+  .timeline-event:hover,
+  .upcoming-event-item:hover,
+  .category-filter:hover {
+    transform: none;
+  }
+  
+  /* Better scroll momentum */
+  .calendar-container,
+  .calendar-sidebar,
+  .week-grid,
+  .day-timeline,
+  .upcoming-list,
+  .modal-content {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ==========================================
+   LANDSCAPE ORIENTATION
+   ========================================== */
+@media (max-width: 768px) and (orientation: landscape) {
+  .calendar-cell {
+    min-height: 60px;
+  }
+  
+  .week-grid,
+  .day-timeline {
+    max-height: calc(100vh - 200px);
+  }
+  
+  .sidebar-section {
+    min-width: 220px;
+  }
+}
+
+/* ==========================================
+   PRINT STYLES
+   ========================================== */
+@media print {
+  .hamburger,
+  .mobile-menu,
+  .calendar-sidebar,
+  .calendar-right-column,
+  .calendar-controls,
+  .modal,
+  .toast {
+    display: none !important;
+  }
+  
+  .calendar-main {
+    width: 100%;
+  }
+  
+  .calendar-container {
+    overflow: visible;
   }
 }

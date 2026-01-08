@@ -1549,6 +1549,20 @@ body.modal-open {
   .slider-btn.prev { left: 10px; }
   .slider-btn.next { right: 10px; }
   
+  /* Fix slider dots - keep them small on mobile */
+  .dot {
+    width: 8px !important;
+    height: 8px !important;
+    min-width: 8px !important;
+    min-height: 8px !important;
+  }
+  
+  .dot.active {
+    width: 24px !important;
+    min-width: 24px !important;
+    height: 8px !important;
+  }
+  
   .slide-caption {
     font-size: 0.9rem;
     padding: 15px;
@@ -1730,10 +1744,15 @@ body.modal-open {
   button,
   a,
   .dropdown-header,
-  .slider-btn,
-  .dot {
+  .slider-btn {
     min-height: 44px;
     min-width: 44px;
+  }
+  
+  /* Keep dots small even on touch devices */
+  .dot {
+    min-height: 8px !important;
+    min-width: 8px !important;
   }
   
   /* Remove hover effects on touch devices */
