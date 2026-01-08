@@ -1,20 +1,54 @@
 // ========================================
 // CALENDAR STATE
 // ========================================
+const API_BASE_URL = 'https://rctc-computer-club-site.vercel.app';
 let currentDate = new Date();
 let currentView = 'month';
-let events = JSON.parse(localStorage.getItem('calendarEvents')) || []; // Load from localStorage
+let events = []; // Will be loaded from backend
 let filteredCategories = new Set(['workshop', 'hackathon', 'social', 'meeting', 'deadline']);
+
+// ========================================
+// BACKEND API FUNCTIONS
+// ========================================
+async function loadEventsFromBackend() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/events`);
+        if (!response.ok) throw new Error('Failed to load events');
+        const data = await response.json();
+        
+        // Convert date strings to Date objects and map 'type' to 'category'
+        events = data.map(event => ({
+            ...event,
+            category: event.type, // Map 'type' from backend to 'category' for calendar
+            start: new Date(event.start),
+            end: new Date(event.end)
+        }));
+        
+        console.log('Loaded events from backend:', events.length);
+    } catch (error) {
+        console.error('Error loading events:', error);
+        events = [];
+    }
+}
 
 // ========================================
 // INITIALIZATION
 // ========================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadEventsFromBackend();
     initializeEventHandlers();
     renderCalendar();
     updateUpcomingEvents();
+    
+    // Refresh events every 60 seconds
+    setInterval(async () => {
+        await loadEventsFromBackend();
+        renderCalendar();
+        updateUpcomingEvents();
+    }, 60000);
 });
 
+// Rest of the file continues exactly as before...
 // ========================================
 // MOBILE MENU
 // ========================================
@@ -555,11 +589,9 @@ function shareCalendar() {
         }).then(() => {
             showToast('Calendar shared successfully!');
         }).catch(() => {
-            // Fallback to clipboard
             copyToClipboard(url);
         });
     } else {
-        // Use clipboard fallback
         copyToClipboard(url);
     }
 }
@@ -601,28 +633,21 @@ async function exportCalendar() {
     showToast('Preparing calendar download...');
     
     try {
-        // Get visible events for current view
         const visibleEvents = events.filter(e => filteredCategories.has(e.category));
-        
-        // Create canvas
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         
-        // Set canvas size
         canvas.width = 1200;
         canvas.height = 800;
         
-        // Background
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        // Title
         ctx.fillStyle = '#1b1261';
         ctx.font = 'bold 36px "Space Mono", monospace';
         ctx.textAlign = 'center';
         ctx.fillText('RCTC CS Club Events Calendar', canvas.width / 2, 60);
         
-        // Period text
         ctx.font = '24px "Space Mono", monospace';
         ctx.fillStyle = '#4f5bc9';
         let periodText = '';
@@ -643,7 +668,6 @@ async function exportCalendar() {
         }
         ctx.fillText(periodText, canvas.width / 2, 100);
         
-        // Get events to display
         let eventsToShow = [];
         if (currentView === 'month') {
             const year = currentDate.getFullYear();
@@ -662,7 +686,6 @@ async function exportCalendar() {
         
         eventsToShow.sort((a, b) => a.start - b.start);
         
-        // Draw events
         ctx.textAlign = 'left';
         ctx.font = '16px "Space Mono", monospace';
         let y = 160;
@@ -684,24 +707,20 @@ async function exportCalendar() {
             };
             
             eventsToShow.slice(0, maxEvents).forEach((event) => {
-                // Category dot
                 ctx.fillStyle = colors[event.category] || '#666';
                 ctx.beginPath();
                 ctx.arc(50, y + 8, 8, 0, 2 * Math.PI);
                 ctx.fill();
                 
-                // Event date
                 ctx.fillStyle = '#666';
                 ctx.font = '14px "Space Mono", monospace';
                 const dateStr = event.start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
                 ctx.fillText(dateStr, 80, y + 5);
                 
-                // Event title
                 ctx.fillStyle = '#1b1261';
                 ctx.font = 'bold 16px "Space Mono", monospace';
                 ctx.fillText(event.title, 80, y + 25);
                 
-                // Event time and location
                 ctx.fillStyle = '#666';
                 ctx.font = '14px "Space Mono", monospace';
                 const timeStr = `${formatTime(event.start)} - ${formatTime(event.end)}`;
@@ -718,13 +737,11 @@ async function exportCalendar() {
             }
         }
         
-        // Footer
         ctx.fillStyle = '#999';
         ctx.font = '14px "Space Mono", monospace';
         ctx.textAlign = 'center';
         ctx.fillText('RCTC Computer Science Club', canvas.width / 2, canvas.height - 30);
         
-        // Download
         canvas.toBlob((blob) => {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -747,7 +764,6 @@ async function exportCalendar() {
 // RSVP HANDLER
 // ========================================
 function handleRSVP() {
-    // In production, this would send data to a backend
     showToast('RSVP submitted! Check your email for confirmation.');
     closeEventModal();
 }
@@ -770,7 +786,6 @@ function showToast(message) {
 // KEYBOARD SHORTCUTS
 // ========================================
 function handleKeyboardShortcuts(e) {
-    // Don't trigger shortcuts when typing in input fields
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     
     switch(e.key) {
@@ -815,65 +830,4 @@ function switchToView(view) {
     showToast(`Switched to ${view} view`);
 }
 
-// ========================================
-// EVENT MANAGEMENT (For Admin Use)
-// ========================================
-// Function to add events - called from admin panel
-function addEvent(eventData) {
-    /*
-    Example eventData format:
-    {
-        id: 1,
-        title: "Event Name",
-        start: new Date(2026, 0, 15, 18, 0),
-        end: new Date(2026, 0, 15, 20, 0),
-        category: "workshop", // workshop, hackathon, social, meeting, deadline
-        location: "Room 301",
-        description: "Event description"
-    }
-    */
-    events.push(eventData);
-    saveEventsToLocalStorage();
-    renderCalendar();
-    updateUpcomingEvents();
-    showToast('Event added successfully!');
-}
-
-// Function to delete event
-function deleteEvent(eventId) {
-    events = events.filter(e => e.id !== eventId);
-    saveEventsToLocalStorage();
-    renderCalendar();
-    updateUpcomingEvents();
-    showToast('Event deleted successfully!');
-}
-
-// Save events to localStorage
-function saveEventsToLocalStorage() {
-    localStorage.setItem('calendarEvents', JSON.stringify(events));
-}
-
-// Load events and convert date strings back to Date objects
-function loadEventsFromLocalStorage() {
-    const stored = localStorage.getItem('calendarEvents');
-    if (stored) {
-        events = JSON.parse(stored).map(event => ({
-            ...event,
-            start: new Date(event.start),
-            end: new Date(event.end)
-        }));
-    }
-}
-
-// Call on page load
-loadEventsFromLocalStorage();
-
-// Export for potential admin panel integration
-window.calendarAPI = {
-    addEvent,
-    deleteEvent,
-    events,
-    renderCalendar,
-    updateUpcomingEvents,
-    saveEventsToLocalStorage
-};
+console.log('RCTC CS Club Calendar - Loaded from backend API');
