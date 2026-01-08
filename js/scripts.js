@@ -200,15 +200,15 @@ if (heroStats) {
     statsObserver.observe(heroStats);
 }
 
-// Add parallax effect to hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero-section');
-    if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-        hero.style.opacity = 1 - (scrolled / 500);
-    }
-});
+// // Add parallax effect to hero section
+// window.addEventListener('scroll', () => {
+//     const scrolled = window.pageYOffset;
+//     const hero = document.querySelector('.hero-section');
+//     if (hero && scrolled < window.innerHeight) {
+//         hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+//         hero.style.opacity = 1 - (scrolled / 500);
+//     }
+// });
 
 // Add hover effect to cards
 document.querySelectorAll('.feature-card, .activity-card').forEach(card => {
