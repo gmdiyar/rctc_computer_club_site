@@ -117,7 +117,6 @@
     <div id="announcementsList"></div>
 
     <script>
-        // REPLACE THIS WITH YOUR VERCEL URL
         const API_BASE_URL = 'https://rctc-computer-club-site.vercel.app';
         
         // Load announcements from backend API
@@ -155,7 +154,8 @@
                 content: document.getElementById('content').value,
                 type: document.getElementById('type').value,
                 author: document.getElementById('author').value || 'Admin',
-                link: document.getElementById('link').value
+                link: document.getElementById('link').value,
+                date: new Date().toISOString()  // Send current client time
             };
             
             try {

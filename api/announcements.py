@@ -74,7 +74,7 @@ def handle_announcements():
                 'type': data.get('type', 'general'),
                 'author': data.get('author', 'Admin'),
                 'link': data.get('link', ''),
-                'date': datetime.now().isoformat()
+                'date': data.get('date', datetime.now().isoformat())  # Use client date if provided
             }
             
             response = supabase.table('announcements').insert(announcement).execute()
