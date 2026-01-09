@@ -136,11 +136,11 @@ function searchDocuments(query) {
 
 // Document view/download functions
 function viewDocument(docId) {
-    alert(`Opening document: ${docId}\n\nNote: This is a demo. In production, this would open the actual document.`);
+    alert(`Feature in production`);
 }
 
 function downloadDocument(docId) {
-    alert(`Downloading document: ${docId}\n\nNote: This is a demo. In production, this would download the actual file.`);
+    alert(`Feature in production`);
 }
 
 // Animate cards on load
