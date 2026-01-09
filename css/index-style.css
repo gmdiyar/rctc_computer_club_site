@@ -325,7 +325,6 @@ button {
 .hero-section {
   padding: 60px 0;
   margin-bottom: 0px;
-  /* Parallax effect removed - hero text no longer fades on scroll */
 }
 
 .hero-content {
