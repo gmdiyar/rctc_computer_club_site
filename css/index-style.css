@@ -115,7 +115,7 @@ button {
 
 /* Hamburger Menu */
 .hamburger {
-  display: flex;
+  display: flex; /* Always visible on all screen sizes */
   flex-direction: column;
   gap: 5px;
   padding: 10px;
@@ -160,8 +160,34 @@ button {
 }
 
 .mobile-menu.active {
-  max-height: 500px;
+  max-height: 800px; /* Increased to accommodate more links */
   padding: 20px;
+  overflow-y: auto; /* Allow scrolling if needed */
+}
+
+/* Mobile menu sections */
+.mobile-menu-section {
+  margin-bottom: 20px;
+}
+
+.mobile-menu-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Hide Main Navigation section on desktop (will show on mobile) */
+.mobile-menu-section.main-nav-section {
+  display: none;
+}
+
+.mobile-menu-section-title {
+  color: var(--five);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  padding: 0 15px;
+  opacity: 0.8;
+  font-weight: 700;
 }
 
 .mobile-nav-link {
@@ -173,9 +199,28 @@ button {
   display: block;
 }
 
+.mobile-nav-link:last-child {
+  border-bottom: none;
+}
+
 .mobile-nav-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
   padding-left: 25px;
+}
+
+.mobile-nav-link i {
+  width: 20px;
+  margin-right: 8px;
+  text-align: center;
+}
+
+/* Highlight Join button in mobile menu */
+.mobile-nav-link.join-highlight {
+  background-color: rgba(255, 255, 255, 0.15);
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  margin: 5px 0;
 }
 
 /* Main Layout */
@@ -1423,10 +1468,15 @@ body.modal-open {
   .left-column-width: 240px;
 }
 
-/* Hide desktop nav on tablet */
+/* Hide desktop nav on tablet and mobile, show hamburger */
 @media (max-width: 868px) {
   .nav-menu { display: none; }
-  .hamburger { display: flex; }
+  .hamburger { display: flex; } /* Show hamburger only on mobile/tablet */
+  
+  /* Show Main Navigation section in mobile menu on mobile/tablet */
+  .mobile-menu-section.main-nav-section {
+    display: block;
+  }
 }
 
 /* Mobile Breakpoint */
@@ -1471,13 +1521,18 @@ body.modal-open {
     margin-bottom: 0;
   }
   
-  /* Mobile menu full width */
+  /* Mobile menu full width and scrollable */
   .mobile-menu {
     right: 0;
     left: 0;
     width: 100%;
     min-width: 100%;
     border-radius: 0 0 8px 8px;
+  }
+  
+  .mobile-menu.active {
+    max-height: 100vh; /* Limit height to 70% of viewport */
+    overflow-y: auto; /* Enable scrolling */
   }
   
   /* Content padding */

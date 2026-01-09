@@ -213,6 +213,44 @@ button:active {
   padding-left: 25px;
 }
 
+/* Mobile menu sections */
+.mobile-menu-section {
+  margin-bottom: 20px;
+}
+
+.mobile-menu-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Hide Main Navigation section on desktop (will show on mobile) */
+.mobile-menu-section.main-nav-section {
+  display: none;
+}
+
+.mobile-menu-section-title {
+  color: var(--five);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  padding: 0 15px;
+  opacity: 0.8;
+  font-weight: 700;
+}
+
+.mobile-nav-link i {
+  width: 20px;
+  text-align: center;
+  margin-right: 8px;
+}
+
+.mobile-nav-link.join-highlight {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
 /* Main Layout */
 .main-wrapper {
   display: flex;
@@ -738,8 +776,17 @@ button:active {
 }
 
 @media (max-width: 868px) {
-  .nav-menu {
+  .navbar-nav {
     display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  /* Show Main Navigation section in mobile menu on mobile/tablet */
+  .mobile-menu-section.main-nav-section {
+    display: block;
   }
 }
 
@@ -747,7 +794,6 @@ button:active {
   .main-wrapper {
     flex-direction: column;
   }
-
   .left-column {
     width: 100%;
     position: relative;
@@ -755,51 +801,55 @@ button:active {
     height: auto;
     max-height: none;
   }
-
   .inner-left-column {
     display: flex;
     gap: 15px;
     overflow-x: auto;
     padding: 15px;
   }
-
   .inner-left-column h3 {
     display: none;
   }
-
   .stat-box {
     min-width: 120px;
     margin-bottom: 0;
   }
-
   .about-section {
     padding: 30px 20px;
   }
-
   .values-grid,
   .activities-grid {
     grid-template-columns: 1fr;
   }
-
   .timeline::before {
     left: 20px;
   }
-
   .timeline-marker {
     left: 20px;
   }
-
   .timeline-content {
     width: calc(100% - 60px);
     margin-left: 60px !important;
   }
-
   .right-column {
     display: block;
     width: 100%;
     position: relative;
     top: 0;
     height: auto;
+  }
+  
+  .mobile-menu {
+    right: 0;
+    left: 0;
+    width: 100%;
+    min-width: 100%;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  .mobile-menu.active {
+    max-height: 100vh;
+    overflow-y: auto;
   }
 }
 
