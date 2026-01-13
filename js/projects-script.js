@@ -24,6 +24,9 @@ dropdownHeaders.forEach(header => {
     });
 });
 
+// In-memory storage for view preference (replaces localStorage)
+let currentView = 'grid';
+
 // View switcher functionality
 const viewBtns = document.querySelectorAll('.view-btn');
 const projectsContainer = document.getElementById('projectsContainer');
@@ -40,22 +43,10 @@ viewBtns.forEach(btn => {
         projectsContainer.className = 'projects-container';
         projectsContainer.classList.add(`${view}-view`);
         
-        // Save preference to localStorage
-        localStorage.setItem('projectsView', view);
+        // Save preference in memory (instead of localStorage)
+        currentView = view;
     });
 });
-
-// Load saved view preference
-const savedView = localStorage.getItem('projectsView');
-if (savedView) {
-    const savedBtn = document.querySelector(`[data-view="${savedView}"]`);
-    if (savedBtn) {
-        viewBtns.forEach(b => b.classList.remove('active'));
-        savedBtn.classList.add('active');
-        projectsContainer.className = 'projects-container';
-        projectsContainer.classList.add(`${savedView}-view`);
-    }
-}
 
 // Filter functionality
 const filterBtns = document.querySelectorAll('.filter-btn');
@@ -181,7 +172,7 @@ document.addEventListener('keydown', (e) => {
         updateProjects(activeFilter, '');
     }
     
-    // Number keys 1-4 for view switching
+    // Number keys 1-3 for view switching
     if (e.key >= '1' && e.key <= '3') {
         const views = ['grid', 'list', 'compact'];
         const viewIndex = parseInt(e.key) - 1;
@@ -266,13 +257,14 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Form Submission Handler with Direct Email Sending
+// Form Submission Handler
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         // Disable submit button to prevent double submission
         const submitBtn = contactForm.querySelector('.btn-submit');
+        const originalButtonHTML = submitBtn.innerHTML;
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         
@@ -288,14 +280,11 @@ if (contactForm) {
             // Show loading state
             if (formStatus) {
                 formStatus.textContent = 'Sending your message...';
-                formStatus.className = 'form-status';
+                formStatus.className = 'form-status loading';
                 formStatus.style.display = 'block';
-                formStatus.style.background = '#e3f2fd';
-                formStatus.style.color = '#1976d2';
-                formStatus.style.border = '2px solid #2196f3';
             }
             
-            // Send email using FormSubmit.co (free service, no signup required)
+            // Send email using FormSubmit.co
             const response = await fetch('https://formsubmit.co/ajax/rctccsclub@gmail.com', {
                 method: 'POST',
                 headers: {
@@ -306,7 +295,7 @@ if (contactForm) {
                     name: formData.name,
                     email: formData.email,
                     subject: `[RCTC CS Club Website] ${formData.topic}`,
-                    message: `Topic: ${formData.topic}\n\nMessage:\n${formData.message}`,
+                    message: `From: ${formData.name} (${formData.email})\nTopic: ${formData.topic}\n\nMessage:\n${formData.message}`,
                     _captcha: 'false'
                 })
             });
@@ -316,7 +305,7 @@ if (contactForm) {
             if (response.ok && result.success) {
                 // Success!
                 if (formStatus) {
-                    formStatus.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
+                    formStatus.textContent = 'Message sent successfully! We\'ll get back to you soon.';
                     formStatus.className = 'form-status success';
                 }
                 
@@ -324,7 +313,7 @@ if (contactForm) {
                 setTimeout(() => {
                     closeModal();
                     submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    submitBtn.innerHTML = originalButtonHTML;
                 }, 2000);
             } else {
                 throw new Error('Failed to send message');
@@ -335,13 +324,13 @@ if (contactForm) {
             
             // Show error message
             if (formStatus) {
-                formStatus.textContent = '✗ Failed to send message. Please try again or email us directly at rctccsclub@gmail.com';
+                formStatus.textContent = 'Failed to send message. Please try emailing us directly at rctccsclub@gmail.com';
                 formStatus.className = 'form-status error';
             }
             
             // Re-enable submit button
             submitBtn.disabled = false;
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            submitBtn.innerHTML = originalButtonHTML;
         }
     });
 }
