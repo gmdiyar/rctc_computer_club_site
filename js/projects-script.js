@@ -24,7 +24,7 @@ dropdownHeaders.forEach(header => {
     });
 });
 
-// In-memory storage for view preference (replaces localStorage)
+// In-memory storage for view preference
 let currentView = 'grid';
 
 // View switcher functionality
@@ -43,7 +43,7 @@ viewBtns.forEach(btn => {
         projectsContainer.className = 'projects-container';
         projectsContainer.classList.add(`${view}-view`);
         
-        // Save preference in memory (instead of localStorage)
+        // Save preference in memory
         currentView = view;
     });
 });
